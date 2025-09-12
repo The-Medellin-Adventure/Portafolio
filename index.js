@@ -5,7 +5,7 @@ const tours = [
     title: 'Medellín 360°',
     type: 'Experiencia virtual',
     short: 'Un tour inmersivo que te lleva por la Plaza Botero, el Pueblito Paisa y otros íconos de Medellín...',
-    img: 'img/citytour.jpg',
+    img: 'img/c360.png',
     meta: 'Experiencia virtual',
     precio: '$40.000 COP por enlace exclusivo válido por 1 hora',
     duracion: '1 hora (enlace virtual)',
