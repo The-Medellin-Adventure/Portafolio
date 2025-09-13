@@ -18,8 +18,9 @@ const tours = [
     short: 'Recorrido por los puntos más icónicos de Medellín: Plaza Botero, Pueblito Paisa y miradores.',
     img: 'https://source.unsplash.com/featured/?medellin,city',
     meta: 'Compartido y Privado',
-    duracion: '1 día',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
+    precio: '$90.000 COP',
+    duracion: '4 horas aprox',
+    url: 'https://themedellinadventure-com.webnode.com.co/city-tour-medellin/'
   },
   {
     id: 3,
@@ -28,8 +29,9 @@ const tours = [
     short: 'Tour cultural por la Comuna 13 con arte urbano, escaleras eléctricas y comunidad local.',
     img: 'https://source.unsplash.com/featured/?comuna13,graffiti',
     meta: 'Compartido y Privado',
-    duracion: '1 día',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
+    precio: '$90.000 COP' <br> 350.000 cop Privado,
+    duracion: '4 horas aprox',
+    url: 'https://themedellinadventure-com.webnode.com.co/city-tour-y-comuna-13/'
   },
   {
     id: 4,
@@ -38,8 +40,9 @@ const tours = [
     short: 'Visita a la Piedra del Peñol y el colorido pueblo de Guatapé.',
     img: 'https://source.unsplash.com/featured/?guatape,peñol',
     meta: 'Compartido y Privado',
-    duracion: '1 día',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
+    precio: '$90.000 COP',
+    duracion: '10 horas',
+    url: 'https://themedellinadventure-com.webnode.com.co/guatape2/'
   },
   {
     id: 5,
