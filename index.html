@@ -133,67 +133,53 @@
     <small style="color: var(--muted);">¡Reserva fácil y vive una experiencia inolvidable!</small>
   </footer>
 
-  <!-- Modal detalle + formulario de reserva -->
-  <div id="modal" class="modal" role="dialog" aria-modal="true">
-    <div class="modal-content">
-      <div class="modal-grid">
-        <!-- Imagen izquierda -->
-        <div id="modal-image"><img src="" alt="Imagen del tour" /></div>
+  <!-- Modal DETALLE -->
+<div id="modal-detalle" class="modal" role="dialog" aria-modal="true">
+  <div class="modal-content">
+    <div class="modal-grid">
+      <!-- Imagen izquierda -->
+      <div id="modal-image"><img src="" alt="Imagen del tour" /></div>
 
-        <!-- Información derecha -->
-        <div class="modal-right">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <h3 id="modal-title">Título</h3>
-            <button class="close" id="modal-close">×</button>
-          </div>
+      <!-- Info derecha -->
+      <div class="modal-right">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3 id="modal-title">Título</h3>
+          <button class="close" id="modal-close-detalle">×</button>
+        </div>
 
-          <p id="modal-meta" style="color:var(--muted);margin:0 0 10px"></p>
-          <div id="modal-desc" style="margin-bottom:10px"></div>
+        <p id="modal-meta" style="color:var(--muted);margin:0 0 10px"></p>
+        <div id="modal-desc" style="margin-bottom:10px"></div>
 
-          <!-- Formulario de reserva -->
-          <div class="modal-cta" style="margin-top:8px">
-            <form id="booking-form" style="display:flex;flex-direction:column;gap:10px;width:100%">
-              <label>
-                Nombre:
-                <input type="text" id="nombre" placeholder="Tu nombre" required />
-              </label>
-
-              <label>
-                Correo:
-                <input type="email" id="correo" placeholder="tu@correo.com" required />
-              </label>
-
-              <label id="tarifa-wrapper">
-                Tarifa:
-                <select id="tarifa"></select>
-              </label>
-
-              <label>
-                Fecha:
-                <input type="date" id="fecha" required />
-              </label>
-
-              <label>
-                Personas:
-                <input type="number" id="personas" min="1" value="1" required />
-              </label>
-
-              <label>
-                Comentarios:
-                <textarea id="comentarios" placeholder="Comentarios adicionales (opcional)"></textarea>
-              </label>
-
-              <div style="display:flex;gap:8px;">
-                <button type="submit" class="btn cta">Enviar a WhatsApp</button>
-                <button type="button" id="close-booking" class="btn">Cancelar</button>
-                <button type="button" id="brochure" class="btn">Descargar info</button>
-              </div>
-            </form>
-          </div>
+        <!-- Botones -->
+        <div class="modal-cta">
+          <button id="btn-reservar" class="btn cta">Reservar</button>
+          <button id="brochure" class="btn">Descargar info</button>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<!-- Modal RESERVA -->
+<div id="modal-reserva" class="modal" role="dialog" aria-modal="true">
+  <div class="modal-content" style="max-width:500px">
+    <div style="padding:20px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3>Reserva tu tour</h3>
+        <button class="close" id="modal-close-reserva">×</button>
+      </div>
+      <form id="booking-form" style="display:flex;flex-direction:column;gap:12px;margin-top:15px">
+        <input type="text" id="nombre" placeholder="Tu nombre" required />
+        <input type="email" id="correo" placeholder="Tu correo" required />
+        <select id="tarifa"></select>
+        <input type="date" id="fecha" required />
+        <input type="number" id="personas" min="1" value="1" required />
+        <textarea id="comentarios" placeholder="Comentarios adicionales"></textarea>
+        <button type="submit" class="btn cta">Enviar a WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</div>
 
   <!-- Script principal -->
   <script src="index.js"></script>
