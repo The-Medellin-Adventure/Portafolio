@@ -6,11 +6,10 @@ const tours = [
     type: 'Experiencia virtual',
     short: 'Un tour inmersivo que te lleva por la Plaza Botero, el Pueblito Paisa y otros íconos de Medellín...',
     img: 'img/360.png',
-   extraImg: 'img/citytour_extra.jpg', // Nueva imagen para la tarjeta del modal
-   meta: 'Compartido y Privado',
-   precioCompartido: '$90.000 COP',
-   precioPrivado: '$350.000 COP',
-   duracion: '4 horas aprox',
+   extraImg: 'img/virtual.png', // Nueva imagen para la tarjeta del modal
+   meta: 'Enlace virtual',
+   precioCompartido: '$40.000 COP',
+   duracion: '1 horas aprox',
    longDesc: 'Este tour incluye transporte privado, guía bilingüe y visita a los principales íconos de la ciudad. Ideal para conocer la cultura paisa en un recorrido dinámico y seguro.'
 },
   {
