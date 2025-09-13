@@ -1,4 +1,4 @@
-// index.js - corregido: prepara tarifa si falta, rellena tour, y añade handler para "Descargar info"
+// index.js - Renderizado de cards y modales con datos completos
 
 const tours = [
   {
@@ -58,27 +58,30 @@ function renderTours(list) {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
-      <img src="${tour.image}" alt="${tour.title}">
+      <img src="${tour.img}" alt="${tour.title}">
       <div class="card-body">
         <div class="meta">
           <span>${tour.meta}</span>
           <span class="tags">${tour.type}</span>
         </div>
         <h3 class="title">${tour.title}</h3>
-        <p class="desc">${tour.desc}</p>
+        <p class="desc">${tour.short}</p>
+        <p style="font-size:13px;color:#555;margin:4px 0;">⏱️ ${tour.duracion}</p>
         <div class="cta">
           <button class="btn ver-mas" data-id="${tour.id}">Ver más</button>
+          <button class="btn cta reservar" data-id="${tour.id}">Reservar</button>
         </div>
       </div>
     `;
     grid.appendChild(card);
   });
 
+  // Handlers
   document.querySelectorAll(".ver-mas").forEach(btn => {
-    btn.addEventListener("click", e => {
-      const id = e.target.dataset.id;
-      openDetalle(id);
-    });
+    btn.addEventListener("click", e => openDetalle(e.target.dataset.id));
+  });
+  document.querySelectorAll(".reservar").forEach(btn => {
+    btn.addEventListener("click", e => openReservaDirecto(e.target.dataset.id));
   });
 }
 
@@ -100,63 +103,62 @@ function openDetalle(id) {
   const tour = tours.find(t => t.id == id);
   if (!tour) return;
 
-  document.getElementById("modal-image").querySelector("img").src = tour.image;
+  document.getElementById("modal-image").innerHTML = `<img src="${tour.extraImg}" alt="${tour.title}">`;
   document.getElementById("modal-title").innerText = tour.title;
-  document.getElementById("modal-meta").innerText = tour.meta;
+  document.getElementById("modal-meta").innerText = `${tour.meta} · ⏱️ ${tour.duracion}`;
 
   let precios = "";
-  if (tour.priceCompartido && tour.pricePrivado) {
-    precios = `<strong>Precio compartido:</strong> ${tour.priceCompartido}<br>
-               <strong>Precio privado:</strong> ${tour.pricePrivado}`;
+  if (tour.precioCompartido && tour.precioPrivado) {
+    precios = `<strong>Precio compartido:</strong> ${tour.precioCompartido}<br>
+               <strong>Precio privado:</strong> ${tour.precioPrivado}`;
   } else {
-    precios = `<strong>Precio:</strong> ${tour.price || ""}`;
+    precios = `<strong>Precio:</strong> ${tour.precio || ""}`;
   }
 
   document.getElementById("modal-desc").innerHTML = `
-    <p>${tour.desc}</p>
+    <p>${tour.longDesc}</p>
     <p>${precios}</p>
   `;
 
-  // Guardar tour en dataset para reserva
   btnReservar.dataset.id = tour.id;
-
   modalDetalle.classList.add("show");
 }
 
+// Abrir reserva directa desde la card
+function openReservaDirecto(id) {
+  const tour = tours.find(t => t.id == id);
+  if (!tour) return;
+
+  document.getElementById("tour").value = tour.title;
+
+  const tarifaSelect = document.getElementById("tarifa");
+  tarifaSelect.innerHTML = "";
+  if (tour.precioCompartido && tour.precioPrivado) {
+    tarifaSelect.innerHTML = `
+      <option value="Compartido">Compartido (${tour.precioCompartido})</option>
+      <option value="Privado">Privado (${tour.precioPrivado})</option>
+    `;
+  } else {
+    tarifaSelect.innerHTML = `<option value="Único">${tour.precio || "Consultar"}</option>`;
+  }
+
+  modalReserva.classList.add("show");
+}
+
 // Cerrar detalle
-closeDetalle.addEventListener("click", () => {
-  modalDetalle.classList.remove("show");
-});
+closeDetalle.addEventListener("click", () => modalDetalle.classList.remove("show"));
 
 // Abrir reserva desde detalle
 btnReservar.addEventListener("click", () => {
   const id = btnReservar.dataset.id;
-  const tour = tours.find(t => t.id == id);
-  if (!tour) return;
-
-  // Llenar nombre del tour en el formulario
-  document.getElementById("tour").value = tour.title;
-
-  // Llenar tarifas según disponibilidad
-  const tarifaSelect = document.getElementById("tarifa");
-  tarifaSelect.innerHTML = "";
-  if (tour.priceCompartido && tour.pricePrivado) {
-    tarifaSelect.innerHTML = `
-      <option value="Compartido">Compartido (${tour.priceCompartido})</option>
-      <option value="Privado">Privado (${tour.pricePrivado})</option>
-    `;
-  } else {
-    tarifaSelect.innerHTML = `<option value="Único">${tour.price || "Consultar"}</option>`;
-  }
-
+  openReservaDirecto(id);
   modalDetalle.classList.remove("show");
-  modalReserva.classList.add("show");
 });
 
 // Cerrar reserva
 closeReserva.addEventListener("click", () => {
   modalReserva.classList.remove("show");
-  modalDetalle.classList.add("show"); // volver al detalle
+  modalDetalle.classList.add("show");
 });
 
 // ====================
@@ -198,7 +200,6 @@ Hola, quiero reservar un tour:
 // Botón descargar info
 // ====================
 brochureBtn.addEventListener("click", () => {
-  // 👉 Aquí puedes cambiar por un archivo PDF real o link a Google Drive
   window.open("docs/brochure.pdf", "_blank");
 });
 
