@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reserva tu tour — The Medellín Adventure</title>
+  <style>
+    :root {
+      --accent: #1f8f6b;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --bg: #f7faf9;
+    }
+    body {
+      font-family: Inter, sans-serif;
+      background: var(--bg);
+      color: #0f172a;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .form-container {
+      background: white;
+      border-radius: 14px;
+      padding: 24px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.1);
+    }
+    h1 {
+      font-size: 22px;
+      margin: 0 0 16px;
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    input, select, textarea, button {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #e6e9ee;
+      font: inherit;
+    }
+    textarea { resize: vertical; min-height: 80px; }
+    button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Reserva tu tour</h1>
+    <form id="booking-form">
+      <input type="text" id="nombre" placeholder="Tu nombre" required />
+      <input type="email" id="correo" placeholder="Tu correo" required />
+      <input type="tel" id="telefono" placeholder="Ej: +57 3001234567" required />
+      <select id="idioma" required>
+        <option value="Español">Español</option>
+        <option value="Inglés">English</option>
+      </select>
+      <input type="text" id="tour" placeholder="Nombre del tour" required />
+      <input type="date" id="fecha" required />
+      <input type="number" id="personas" min="1" value="1" required />
+      <textarea id="comentarios" placeholder="Comentarios adicionales"></textarea>
+      <button type="submit">Enviar a WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('booking-form').addEventListener('submit', e => {
+      e.preventDefault();
+
+      const nombre = document.getElementById('nombre').value.trim();
+      const correo = document.getElementById('correo').value.trim();
+      const telefonoCliente = document.getElementById('telefono').value.trim();
+      const idioma = document.getElementById('idioma').value;
+      const tour = document.getElementById('tour').value.trim();
+      const fecha = document.getElementById('fecha').value;
+      const personas = document.getElementById('personas').value;
+      const comentarios = document.getElementById('comentarios').value.trim();
+
+      let mensaje = `Hola 👋, soy *${nombre}*.\n`;
+      mensaje += `Quiero reservar el tour: *${tour}*.\n`;
+      mensaje += `Fecha: ${fecha}\n`;
+      mensaje += `Personas: ${personas}\n`;
+      mensaje += `Correo: ${correo}\n`;
+      mensaje += `Teléfono: ${telefonoCliente}\n`;
+      mensaje += `Idioma preferido: ${idioma}\n`;
+      if (comentarios) mensaje += `Comentarios: ${comentarios}\n`;
+
+      const telefonoDestino = "573247615677"; // 👈 tu número de WhatsApp
+      const url = `https://wa.me/${telefonoDestino}?text=${encodeURIComponent(mensaje)}`;
+
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html>
