@@ -92,6 +92,7 @@ function openDetail(id) {
   if (!t) return;
   currentTour = t;
 
+  document.getElementById('modal-title').textContent = t.title; // 👈 título
   document.getElementById('modal-meta').textContent = `${t.meta} • ${t.duracion}`;
   document.getElementById('modal-image').innerHTML = `<img src="${t.extraImg || t.img}" alt="${t.title}" />`;
 
