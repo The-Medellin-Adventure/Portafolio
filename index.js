@@ -1,39 +1,42 @@
-// Datos tomados de: https://themedellinadventure-com.webnode.com.co/destinos/
+
+// Tour data (puedes editar precios, longDesc, extraImg, etc.)
 const tours = [
   {
     id: 1,
     title: 'Medellín 360°',
     type: 'Experiencia virtual',
-    short: 'Un tour inmersivo que te lleva por la Plaza Botero, el Pueblito Paisa y otros íconos de Medellín...',
+    short: 'Un tour inmersivo por Plaza Botero, Pueblito Paisa y otros íconos de Medellín.',
     img: 'img/360.png',
-   extraImg: 'img/virtual.png', // Nueva imagen para la tarjeta del modal
-   meta: 'Enlace virtual',
-   precio: '$40.000 COP',
-   duracion: '1 horas aprox',
-   longDesc: 'Este tour incluye transporte privado, guía bilingüe y visita a los principales íconos de la ciudad. Ideal para conocer la cultura paisa en un recorrido dinámico y seguro.'
-},
+    extraImg: 'img/virtual.png',
+    meta: 'Enlace virtual',
+    precio: '$40.000 COP por enlace exclusivo válido por 1 hora',
+    duracion: '1 hora',
+    longDesc: 'Disfruta de un recorrido virtual acompañado por un guía profesional. Ideal para quienes desean conocer Medellín desde cualquier lugar del mundo.'
+  },
   {
     id: 2,
     title: 'City Tour Medellín',
     type: 'compartido',
-    short: 'Recorrido por los puntos más icónicos de Medellín: Plaza Botero, Pueblito Paisa y miradores.',
+    short: 'Recorrido por los puntos más icónicos de Medellín: Plaza Botero y miradores.',
     img: 'https://source.unsplash.com/featured/?medellin,city',
+    extraImg: 'https://source.unsplash.com/featured/?medellin,plazabotero',
     meta: 'Compartido y Privado',
     precioCompartido: '$90.000 COP',
     precioPrivado: '$350.000 COP',
     duracion: '4 horas aprox',
-    url: 'https://themedellinadventure-com.webnode.com.co/city-tour-medellin/'
+    longDesc: 'Este tour incluye transporte, guía local y paradas en los miradores principales. Perfecto para recorrer la ciudad con comodidad.'
   },
   {
     id: 3,
     title: 'Graffitour - Comuna 13',
     type: 'compartido',
-    short: 'Tour cultural por la Comuna 13 con arte urbano, escaleras eléctricas y comunidad local.',
+    short: 'Tour cultural por la Comuna 13 con arte urbano y comunidad local.',
     img: 'https://source.unsplash.com/featured/?comuna13,graffiti',
+    extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
     meta: 'Compartido y Privado',
     precio: '$90.000 COP',
     duracion: '4 horas aprox',
-    url: 'https://themedellinadventure-com.webnode.com.co/city-tour-y-comuna-13/'
+    longDesc: 'Un recorrido por la historia y el arte urbano de la Comuna 13, con guías locales que cuentan la transformación del barrio.'
   },
   {
     id: 4,
@@ -41,96 +44,31 @@ const tours = [
     type: 'compartido',
     short: 'Visita a la Piedra del Peñol y el colorido pueblo de Guatapé.',
     img: 'https://source.unsplash.com/featured/?guatape,peñol',
+    extraImg: 'https://source.unsplash.com/featured/?guatape,color',
     meta: 'Compartido y Privado',
     precio: '$90.000 COP',
     duracion: '10 horas',
-    url: 'https://themedellinadventure-com.webnode.com.co/guatape2/'
+    longDesc: 'Excursión de día completo con tiempo para subir la Piedra del Peñol y recorrer el pueblo colorido de Guatapé.'
   },
+  // ... (restantes tours)
   {
     id: 5,
     title: 'Tour del Café',
     type: 'privado',
     short: 'Experiencia sensorial en fincas cafeteras cerca de Medellín.',
     img: 'https://source.unsplash.com/featured/?coffee,farm',
-    meta: 'Compartido y Privado',
-    duracion: '1 día',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
-  },
-  {
-    id: 6,
-    title: 'Tour Casa de las Flores',
-    type: 'privado',
-    short: 'Paseo cultural por la casa y paisajes de flores, ideal para fotografía.',
-    img: 'https://source.unsplash.com/featured/?flowers,house',
     meta: 'Privado',
     duracion: '1 día',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
-  },
-  {
-    id: 7,
-    title: 'Resiliencia Activa - Pablo Escobar',
-    type: 'compartido',
-    short: 'Ruta cultural y reflexiva sobre la historia reciente de Medellín.',
-    img: 'https://source.unsplash.com/featured/?medellin,history',
-    meta: 'Compartido y Privado',
-    duracion: '1 día',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
-  },
-  {
-    id: 8,
-    title: 'Santa Fé de Antioquia',
-    type: 'compartido',
-    short: 'Pueblo colonial con arquitectura y puentes históricos.',
-    img: 'https://source.unsplash.com/featured/?santafedeantioquia,colonial',
-    meta: 'Compartido y Privado',
-    duracion: '1 día',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
-  },
-  {
-    id: 9,
-    title: 'Rio Claro',
-    type: 'privado',
-    short: 'Vuelo en tándem sobre valles y paisajes; aventura y vistas únicas.',
-    img: 'https://source.unsplash.com/featured/?paragliding,parapente',
-    meta: 'Privado',
-    duracion: '1 día',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
-  },
-  {
-    id: 10,
-    title: 'Parapente',
-    type: 'privado',
-    short: 'Vuelo en tándem sobre valles y paisajes; aventura y vistas únicas.',
-    img: 'https://source.unsplash.com/featured/?paragliding,parapente',
-    meta: 'Privado',
-    duracion: '1 día',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
-  },
-  {
-    id: 11,
-    title: "Atv's - Cuatrimotos",
-    type: 'privado',
-    short: 'Aventura off-road con cuatrimotos en rutas naturales.',
-    img: 'https://source.unsplash.com/featured/?atv,quad',
-    meta: 'Privado',
-    duracion: '1 día',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
-  },
-  {
-    id: 12,
-    title: 'Cabalgata',
-    type: 'privado',
-    short: 'Aventura off-road con cuatrimotos en rutas naturales.',
-    img: 'https://source.unsplash.com/featured/?atv,quad',
-    meta: 'Privado',
-    duracion: '1 día',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
+    longDesc: 'Visita a finca cafetera con explicación del proceso del café, degustación y paseo por los cultivos.'
   }
 ];
 
+// Variables
 const grid = document.getElementById('tours-grid');
 const empty = document.getElementById('empty');
+let currentTour = null;
 
+// Render tarjetas
 function render(list) {
   grid.innerHTML = '';
   if (!list.length) {
@@ -144,17 +82,17 @@ function render(list) {
     const card = document.createElement('article');
     card.className = 'card';
     card.innerHTML = `
-      <img src="${t.img}" alt="${t.title}" />
+      <img src="${t.img}" alt="${escapeHtml(t.title)}" />
       <div class="card-body">
         <div class="meta">
           <span>Duración: ${t.duracion || 'No especificada'}</span>
-          <span class="tags">${t.meta}</span>
+          <span class="tags">${t.meta || ''}</span>
         </div>
-        <h4 class="title">${t.title}</h4>
-        <p class="desc">${t.short}</p>
+        <h4 class="title">${escapeHtml(t.title)}</h4>
+        <p class="desc">${escapeHtml(t.short)}</p>
         <div class="cta">
           <button class="btn" data-id="${t.id}" onclick="openDetail(${t.id})">Ver más</button>
-          <a class="btn cta" href="${t.url || '#'}" target="_blank" rel="noopener noreferrer">Reservar</a>
+          <button class="btn cta" data-id="${t.id}" onclick="openBooking(${t.id})">Reservar</button>
         </div>
       </div>
     `;
@@ -162,102 +100,186 @@ function render(list) {
   });
 }
 
+// Abre modal con detalle
 function openDetail(id) {
   const t = tours.find(x => x.id === id);
   if (!t) return;
+  currentTour = t;
 
-  const modal = document.getElementById('modal');
+  // Imagen izquierda
+  const modalImage = document.getElementById('modal-image');
+  modalImage.innerHTML = `<img src="${t.extraImg || t.img}" alt="${escapeHtml(t.title)}" />`;
 
-  // Imagen de la izquierda
-  document.getElementById('modal-image').innerHTML = `
-    <img src="${t.extraImg || t.img}" alt="${t.title}" />
-  `;
-
-  // Información de la derecha
+  // Info derecha
   document.getElementById('modal-title').textContent = t.title;
   document.getElementById('modal-meta').textContent = `${t.meta || ''} • Duración: ${t.duracion || 'No especificada'}`;
 
-let precioHTML = '';
-if (t.precioCompartido && t.precioPrivado) {
-  precioHTML = `
-    <p><strong>Precio compartido:</strong> ${t.precioCompartido}</p>
-    <p><strong>Precio privado:</strong> ${t.precioPrivado}</p>
-  `;
-} else if (t.precio) {
-  precioHTML = `<p><strong>Precio:</strong> ${t.precio}</p>`;
+  // Precio (condicional)
+  let precioHTML = '';
+  if (t.precioCompartido && t.precioPrivado) {
+    precioHTML = `
+      <p><strong>Precio compartido:</strong> ${t.precioCompartido}</p>
+      <p><strong>Precio privado:</strong> ${t.precioPrivado}</p>
+    `;
+  } else if (t.precio) {
+    precioHTML = `<p><strong>Precio:</strong> ${t.precio}</p>`;
+  } else {
+    precioHTML = `<p><strong>Precio:</strong> Consultar</p>`;
+  }
+
+  document.getElementById('modal-desc').innerHTML = `<p>${t.longDesc || t.short}</p>${precioHTML}`;
+
+  // Rellenar select de tarifa para el formulario
+  const tarifa = document.getElementById('tarifa');
+  tarifa.innerHTML = '';
+  if (t.precioCompartido && t.precioPrivado) {
+    tarifa.innerHTML = `
+      <option value="Compartido|${t.precioCompartido}">Compartido — ${t.precioCompartido}</option>
+      <option value="Privado|${t.precioPrivado}">Privado — ${t.precioPrivado}</option>
+    `;
+    tarifa.disabled = false;
+  } else if (t.precio) {
+    tarifa.innerHTML = `<option value="Unico|${t.precio}">Precio — ${t.precio}</option>`;
+    tarifa.disabled = true;
+  } else {
+    tarifa.innerHTML = `<option value="Consultar|Sin precio">Consultar — Solicitar precio</option>`;
+    tarifa.disabled = true;
+  }
+
+  // Mostrar modal
+  document.getElementById('modal').classList.add('show');
+
+  // colocar foco en nombre para mejor UX
+  setTimeout(() => {
+    const nombre = document.getElementById('nombre');
+    if (nombre) nombre.focus();
+  }, 150);
 }
+window.openDetail = openDetail; // global para onclick inline
 
-  
-document.getElementById('modal-desc').innerHTML = `
-  <p>${t.longDesc || t.short}</p>
-  ${precioHTML}
-`;
-
-  modal.classList.add('show');
+// Abrir modal y llevar al formulario (desde botón "Reservar" en la tarjeta)
+function openBooking(id) {
+  openDetail(id);
+  // luego hacer scroll al formulario dentro del modal
+  setTimeout(() => {
+    const form = document.getElementById('booking-form');
+    if (form) form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const nombre = document.getElementById('nombre');
+    if (nombre) nombre.focus();
+  }, 250);
 }
+window.openBooking = openBooking; // global para onclick inline
 
-document.getElementById('modal-close').addEventListener('click', () => {
-  document.getElementById('modal').classList.remove('show');
-});
-
-document.getElementById('clear').addEventListener('click', () => {
-  document.getElementById('search').value = '';
-  document.getElementById('type').value = 'all';
-  filter();
-});
-
+// Filtrado
 function filter() {
   const q = document.getElementById('search').value.toLowerCase();
   const type = document.getElementById('type').value;
 
   const filtered = tours.filter(t => {
-    const matchQuery = t.title.toLowerCase().includes(q) || t.short.toLowerCase().includes(q);
-    const matchType = type === 'all' ? true : t.type.toLowerCase() === type.toLowerCase();
+    const matchQuery = t.title.toLowerCase().includes(q) || (t.short && t.short.toLowerCase().includes(q));
+    const matchType = type === 'all' ? true : (t.type && t.type.toLowerCase() === type.toLowerCase());
     return matchQuery && matchType;
   });
 
   render(filtered);
 }
 
-document.getElementById('search').addEventListener('input', filter);
-document.getElementById('type').addEventListener('change', filter);
+// Escapado básico para evitar inyección de HTML en textos
+function escapeHtml(text) {
+  if (!text) return '';
+  return String(text)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
 
-// Render inicial con todos los tours
-render(tours);
+// Inicialización después de que DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+  // Render inicial
+  render(tours);
 
-// Botón descargar (simulado)
-document.getElementById('brochure').addEventListener('click', () => {
-  alert('Se descargará un folleto con la información del tour (simulación).');
-});
+  // Cierra modal (botón X)
+  const modalClose = document.getElementById('modal-close');
+  if (modalClose) {
+    modalClose.addEventListener('click', () => {
+      document.getElementById('modal').classList.remove('show');
+    });
+  }
 
-// Abrir formulario de reserva al dar clic en "Reservar"
-document.getElementById('reserve-link').addEventListener('click', function(e) {
-  e.preventDefault();
-  document.getElementById('booking-form').scrollIntoView({ behavior: "smooth" });
-});
+  // Botón cancelar dentro del formulario
+  const closeBooking = document.getElementById('close-booking');
+  if (closeBooking) {
+    closeBooking.addEventListener('click', () => {
+      document.getElementById('modal').classList.remove('show');
+    });
+  }
 
-// Cerrar reserva
-document.getElementById('close-booking').addEventListener('click', () => {
-  document.getElementById('modal').classList.remove('show');
-});
+  // Botón limpiar controles
+  const clearBtn = document.getElementById('clear');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      document.getElementById('search').value = '';
+      document.getElementById('type').value = 'all';
+      filter();
+    });
+  }
 
-// Enviar formulario a WhatsApp
-document.getElementById('booking-form').addEventListener('submit', function(e) {
-  e.preventDefault();
+  // Input search + type
+  const searchInput = document.getElementById('search');
+  if (searchInput) searchInput.addEventListener('input', filter);
+  const typeSelect = document.getElementById('type');
+  if (typeSelect) typeSelect.addEventListener('change', filter);
 
-  const nombre = document.getElementById('nombre').value;
-  const correo = document.getElementById('correo').value;
-  const fecha = document.getElementById('fecha').value;
-  const personas = document.getElementById('personas').value;
-  const comentarios = document.getElementById('comentarios').value;
+  // Brochure (simulación)
+  const brochure = document.getElementById('brochure');
+  if (brochure) {
+    brochure.addEventListener('click', () => {
+      alert('Se descargará un folleto con la información del tour (simulación).');
+    });
+  }
 
-  const mensaje = `Hola 👋, soy ${nombre}.
-Quiero reservar un tour el ${fecha} para ${personas} persona(s).
-📧 Correo: ${correo}
-📝 Comentarios: ${comentarios}`;
+  // Envío del formulario -> abre WhatsApp
+  const bookingForm = document.getElementById('booking-form');
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-  const telefono = "573247615677"; // tu número en formato internacional
-  const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+      if (!currentTour) {
+        alert('Por favor, primero abre el detalle del tour y luego envía la reserva.');
+        return;
+      }
 
-  window.open(url, '_blank');
+      const nombre = document.getElementById('nombre').value.trim();
+      const correo = document.getElementById('correo').value.trim();
+      const fecha = document.getElementById('fecha').value;
+      const personas = document.getElementById('personas').value;
+      const comentarios = document.getElementById('comentarios').value.trim();
+      const tarifaVal = document.getElementById('tarifa').value || '';
+
+      // tarifaVal formato: "Tipo|Precio" (ej. "Compartido|$90.000 COP")
+      const [tipoTarifa, precioSeleccionado] = tarifaVal.split('|');
+
+      let mensaje = `Hola 👋, soy *${nombre}*.\n`;
+      mensaje += `Quiero reservar: *${currentTour.title}*.\n`;
+      if (tipoTarifa) mensaje += `Tarifa: ${tipoTarifa} — ${precioSeleccionado || ''}\n`;
+      mensaje += `Fecha: ${fecha}\n`;
+      mensaje += `Personas: ${personas}\n`;
+      if (correo) mensaje += `Correo: ${correo}\n`;
+      if (comentarios) mensaje += `Comentarios: ${comentarios}\n`;
+      mensaje += `\nID Tour: ${currentTour.id}`;
+
+      // Número de WhatsApp (formato internacional sin +). Cambia aquí si lo necesitas.
+      const telefono = "573247615677";
+
+      const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+      // abrir WhatsApp en nueva ventana/pestaña
+      window.open(url, '_blank');
+
+      // opcional: cerrar modal
+      document.getElementById('modal').classList.remove('show');
+    });
+  }
 });
