@@ -133,22 +133,25 @@
   </footer>
 
   <!-- Modal DETALLE -->
-  <div id="modal-detalle" class="modal" role="dialog" aria-modal="true">
-    <div class="modal-content">
-      <div class="modal-grid">
-        <div id="modal-image"><img src="" alt="Imagen del tour" /></div>
-        <div class="modal-right">
+<div id="modal-detalle" class="modal" role="dialog" aria-modal="true">
+  <div class="modal-content">
+    <div class="modal-grid">
+      <div id="modal-image"><img src="" alt="Imagen del tour" /></div>
+      <div class="modal-right">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3 id="modal-title">Título del Tour</h3> <!-- 👈 aquí el título -->
           <button class="close" id="modal-close-detalle">×</button>
-          <p id="modal-meta" style="color:var(--muted);margin:0 0 10px"></p>
-          <div id="modal-desc" style="margin-bottom:10px"></div>
-          <div class="modal-cta">
-            <button id="btn-reservar" class="btn cta">Reservar</button>
-            <button id="brochure" class="btn">Descargar info</button>
-          </div>
+        </div>
+        <p id="modal-meta" style="color:var(--muted);margin:0 0 10px"></p>
+        <div id="modal-desc" style="margin-bottom:10px"></div>
+        <div class="modal-cta">
+          <button id="btn-reservar" class="btn cta">Reservar</button>
+          <button id="brochure" class="btn">Descargar info</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
   <!-- Modal RESERVA -->
   <div id="modal-reserva" class="modal" role="dialog" aria-modal="true">
