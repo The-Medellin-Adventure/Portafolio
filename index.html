@@ -95,6 +95,9 @@
     }
 
     /* Estilo del formulario de reserva */
+    #modal-reserva {
+      text-align: left; /* 👈 todos los textos alineados a la izquierda */
+    }
     #modal-reserva .modal-content {
       max-width: 480px;
       border-radius: 16px;
@@ -106,7 +109,8 @@
       font-weight: 500;
       color: var(--muted);
       margin-bottom: 2px;
-      display: block;
+      display: inline-block;  /* 👈 ocupa solo el ancho del texto */
+      text-align: left;       /* 👈 alineado a la izquierda */
     }
     #modal-reserva input,
     #modal-reserva select,
@@ -247,3 +251,4 @@
   <script src="index.js"></script>
 </body>
 </html>
+
