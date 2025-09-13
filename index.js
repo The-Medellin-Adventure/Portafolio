@@ -166,11 +166,21 @@ function openDetail(id) {
   if (!t) return;
 
   const modal = document.getElementById('modal');
-  document.getElementById('modal-image').querySelector('img').src = t.img;
+
+  // Imagen de la izquierda
+  document.getElementById('modal-image').innerHTML = `
+    <img src="${t.extraImg || t.img}" alt="${t.title}" />
+  `;
+
+  // Información de la derecha
   document.getElementById('modal-title').textContent = t.title;
-  document.getElementById('modal-meta').textContent = `${t.meta} • Duración: ${t.duracion || 'No especificada'}`;
-  document.getElementById('modal-desc').textContent = `${t.short}\n\nIncluye guía profesional, transporte y seguro en todos los tours. Reserva con anticipación.`;
-  document.getElementById('reserve-link').href = t.url || '#';
+  document.getElementById('modal-meta').textContent = `${t.meta || ''} • Duración: ${t.duracion || 'No especificada'}`;
+
+  document.getElementById('modal-desc').innerHTML = `
+    <p>${t.longDesc || t.short}</p>
+    <p><strong>Precio:</strong> ${t.precio || 'Consulta con nosotros'}</p>
+  `;
+
   modal.classList.add('show');
 }
 
