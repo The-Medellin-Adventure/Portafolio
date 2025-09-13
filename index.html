@@ -97,7 +97,7 @@
       <img src="img/logo.png" alt="The Medellín Adventure" />
       <h1>Portafolio de Tours — The Medellín Adventure</h1>
     </header>
-    <p class="lead">Con The Medellín Adventure descubrirás experiencias únicas para vivir la ciudad y sus municipios cercanos.</p>
+    <p class="lead">The Medellín Adventure somos una empresa turística dedicada a brindar experiencias inolvidables. Ofrecemos recorridos guiados por la ciudad de Medellín y sus alrededores, explorando parques, comunas, miradores y municipios cercanos, con aventuras llenas de cultura, diversión y adrenalina.</p>
   </div>
 
   <section class="controls" aria-label="Controles">
@@ -124,25 +124,37 @@
     <small style="color: var(--muted);">¡Reserva fácil y vive una experiencia inolvidable!</strong></small>
   </footer>
 
-  <div id="modal" class="modal" role="dialog" aria-modal="true">
-    <div class="modal-content">
-      <div class="modal-grid">
-        <div id="modal-image"><img src="" alt="Imagen del tour" /></div>
-        <div class="modal-right">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <h3 id="modal-title">Título</h3>
-            <button class="close" id="modal-close">×</button>
-          </div>
-          <p id="modal-meta"></p>
-          <p id="modal-desc"></p>
-          <div class="modal-cta">
-            <a id="reserve-link" class="btn cta" href="#">Reservar</a>
-            <button id="brochure" class="btn">Descargar info</button>
-          </div>
+<div id="modal" class="modal" role="dialog" aria-modal="true">
+  <div class="modal-content">
+    <div class="modal-grid">
+      <!-- Imagen izquierda -->
+      <div id="modal-image"><img src="" alt="Imagen del tour" /></div>
+
+      <!-- Información derecha -->
+      <div class="modal-right">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3 id="modal-title">Título</h3>
+          <button class="close" id="modal-close">×</button>
+        </div>
+        <p id="modal-meta"></p>
+        <div id="modal-desc"></div>
+
+        <!-- Formulario de reserva -->
+        <div class="modal-cta" style="margin-top:15px">
+          <form id="booking-form" style="display:flex;flex-direction:column;gap:10px;width:100%">
+            <input type="text" id="nombre" placeholder="Tu nombre" required />
+            <input type="email" id="correo" placeholder="Tu correo" required />
+            <input type="date" id="fecha" required />
+            <input type="number" id="personas" min="1" value="1" required />
+            <textarea id="comentarios" placeholder="Comentarios adicionales"></textarea>
+            <button type="submit" class="btn cta">Enviar a WhatsApp</button>
+          </form>
+          <button id="brochure" class="btn">Descargar info</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
   <script src="index.js"></script>
 </body>
