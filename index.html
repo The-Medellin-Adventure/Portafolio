@@ -72,7 +72,7 @@
       position: fixed; inset: 0; display: none;
       align-items: center; justify-content: center;
       background: rgba(2, 6, 23, 0.5); padding: 28px;
-      z-index: 2000; /* para estar encima del header */
+      z-index: 2000;
     }
     .modal.show { display: flex; }
     .modal-content {
@@ -93,9 +93,54 @@
       .modal-grid { grid-template-columns: 1fr; }
       .modal-right { padding: 14px; }
     }
-    #booking-form input, #booking-form textarea, #booking-form select {
+
+    /* Estilo del formulario de reserva */
+    #modal-reserva .modal-content {
+      max-width: 480px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      animation: fadeInUp 0.3s ease;
+    }
+    #modal-reserva label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 2px;
+      display: block;
+    }
+    #modal-reserva input,
+    #modal-reserva select,
+    #modal-reserva textarea {
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
       width: 100%;
       box-sizing: border-box;
+    }
+    #modal-reserva input:focus,
+    #modal-reserva select:focus,
+    #modal-reserva textarea:focus {
+      border-color: var(--accent);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(31,143,107,0.2);
+    }
+    #modal-reserva button[type="submit"] {
+      background: var(--accent);
+      color: white;
+      border: none;
+      font-size: 16px;
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+    #modal-reserva button[type="submit"]:hover {
+      opacity: 0.9;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -155,22 +200,21 @@
 
   <!-- Modal RESERVA -->
   <div id="modal-reserva" class="modal" role="dialog" aria-modal="true">
-    <div class="modal-content" style="max-width:500px">
-      <div style="padding:20px">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <h3>Reserva tu tour</h3>
-          <button class="close" id="modal-close-reserva">×</button>
+    <div class="modal-content">
+      <div style="padding:24px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <h2 style="margin:0;font-size:20px;color:var(--accent)">📝 Reserva tu tour</h2>
+          <button class="close" id="modal-close-reserva" style="font-size:24px;color:var(--muted)">×</button>
         </div>
 
-        <form id="booking-form">
-          <label for="nombre">👤 Tu nombre</label>
-          <input type="text" id="nombre" placeholder="Escribe tu nombre" required />
+        <form id="booking-form" style="display:flex;flex-direction:column;gap:14px">
+          <label for="nombre">👤 Nombre completo</label>
+          <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required />
 
-          <label for="correo">📧 Tu correo</label>
-          <input type="email" id="correo" placeholder="Escribe tu correo" required />
+          <label for="correo">📧 Correo electrónico</label>
+          <input type="email" id="correo" placeholder="Ej: correo@dominio.com" required />
 
-          <!-- <- Aquí estaba el problema: el select tarifa falta en tu archivo original -->
-          <label for="tarifa">💲 Tarifa</label>
+          <label for="tarifa">💲 Tipo de tarifa</label>
           <select id="tarifa"></select>
 
           <label for="telefono">📞 Teléfono con indicativo</label>
@@ -194,7 +238,7 @@
           <label for="comentarios">📝 Comentarios adicionales</label>
           <textarea id="comentarios" placeholder="Escribe aquí tus comentarios"></textarea>
 
-          <button type="submit" class="btn cta">Enviar a WhatsApp</button>
+          <button type="submit">Reservar por WhatsApp</button>
         </form>
       </div>
     </div>
@@ -203,5 +247,3 @@
   <script src="index.js"></script>
 </body>
 </html>
-
-
