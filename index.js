@@ -1,15 +1,16 @@
+// index.js - Versión con dos modales: Detalle y Reserva
 
-// Tour data (puedes editar precios, longDesc, extraImg, etc.)
+// Datos de ejemplo, edita libremente
 const tours = [
   {
     id: 1,
     title: 'Medellín 360°',
-    type: 'Experiencia virtual',
+    type: 'virtual',
     short: 'Un tour inmersivo por Plaza Botero, Pueblito Paisa y otros íconos de Medellín.',
     img: 'img/360.png',
     extraImg: 'img/virtual.png',
-    meta: 'Enlace virtual',
-    precio: '$40.000 COP por enlace exclusivo válido por 1 hora',
+    meta: 'Virtual',
+    precio: '$40.000 COP',
     duracion: '1 hora',
     longDesc: 'Disfruta de un recorrido virtual acompañado por un guía profesional. Ideal para quienes desean conocer Medellín desde cualquier lugar del mundo.'
   },
@@ -19,12 +20,12 @@ const tours = [
     type: 'compartido',
     short: 'Recorrido por los puntos más icónicos de Medellín: Plaza Botero y miradores.',
     img: 'https://source.unsplash.com/featured/?medellin,city',
-    extraImg: 'https://source.unsplash.com/featured/?medellin,plazabotero',
-    meta: 'Compartido y Privado',
+    extraImg: 'https://source.unsplash.com/featured/?plazabotero,medellin',
+    meta: 'Compartido / Privado',
     precioCompartido: '$90.000 COP',
     precioPrivado: '$350.000 COP',
-    duracion: '4 horas aprox',
-    longDesc: 'Este tour incluye transporte, guía local y paradas en los miradores principales. Perfecto para recorrer la ciudad con comodidad.'
+    duracion: '4 horas',
+    longDesc: 'Incluye transporte, guía local y paradas en los miradores principales.'
   },
   {
     id: 3,
@@ -33,50 +34,26 @@ const tours = [
     short: 'Tour cultural por la Comuna 13 con arte urbano y comunidad local.',
     img: 'https://source.unsplash.com/featured/?comuna13,graffiti',
     extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
-    meta: 'Compartido y Privado',
+    meta: 'Compartido',
     precio: '$90.000 COP',
-    duracion: '4 horas aprox',
-    longDesc: 'Un recorrido por la historia y el arte urbano de la Comuna 13, con guías locales que cuentan la transformación del barrio.'
-  },
-  {
-    id: 4,
-    title: 'Guatapé',
-    type: 'compartido',
-    short: 'Visita a la Piedra del Peñol y el colorido pueblo de Guatapé.',
-    img: 'https://source.unsplash.com/featured/?guatape,peñol',
-    extraImg: 'https://source.unsplash.com/featured/?guatape,color',
-    meta: 'Compartido y Privado',
-    precio: '$90.000 COP',
-    duracion: '10 horas',
-    longDesc: 'Excursión de día completo con tiempo para subir la Piedra del Peñol y recorrer el pueblo colorido de Guatapé.'
-  },
-  // ... (restantes tours)
-  {
-    id: 5,
-    title: 'Tour del Café',
-    type: 'privado',
-    short: 'Experiencia sensorial en fincas cafeteras cerca de Medellín.',
-    img: 'https://source.unsplash.com/featured/?coffee,farm',
-    meta: 'Privado',
-    duracion: '1 día',
-    longDesc: 'Visita a finca cafetera con explicación del proceso del café, degustación y paseo por los cultivos.'
+    duracion: '4 horas',
+    longDesc: 'Recorrido por la historia y el arte urbano de la Comuna 13, con guías locales.'
   }
 ];
 
-// Variables
-const grid = document.getElementById('tours-grid');
-const empty = document.getElementById('empty');
 let currentTour = null;
 
-// Render tarjetas
+// Renderiza las tarjetas
 function render(list) {
+  const grid = document.getElementById('tours-grid');
+  const empty = document.getElementById('empty');
   grid.innerHTML = '';
+
   if (!list.length) {
     empty.style.display = 'block';
     return;
-  } else {
-    empty.style.display = 'none';
   }
+  empty.style.display = 'none';
 
   list.forEach(t => {
     const card = document.createElement('article');
@@ -85,14 +62,14 @@ function render(list) {
       <img src="${t.img}" alt="${escapeHtml(t.title)}" />
       <div class="card-body">
         <div class="meta">
-          <span>Duración: ${t.duracion || 'No especificada'}</span>
-          <span class="tags">${t.meta || ''}</span>
+          <span>Duración: ${t.duracion}</span>
+          <span class="tags">${t.meta}</span>
         </div>
         <h4 class="title">${escapeHtml(t.title)}</h4>
         <p class="desc">${escapeHtml(t.short)}</p>
         <div class="cta">
-          <button class="btn" data-id="${t.id}" onclick="openDetail(${t.id})">Ver más</button>
-          <button class="btn cta" data-id="${t.id}" onclick="openBooking(${t.id})">Reservar</button>
+          <button class="btn" onclick="openDetail(${t.id})">Ver más</button>
+          <button class="btn cta" onclick="openReserva(${t.id})">Reservar</button>
         </div>
       </div>
     `;
@@ -100,91 +77,59 @@ function render(list) {
   });
 }
 
-// Abre modal con detalle
+// Abre modal de detalle
 function openDetail(id) {
   const t = tours.find(x => x.id === id);
   if (!t) return;
   currentTour = t;
 
-  // Imagen izquierda
-  const modalImage = document.getElementById('modal-image');
-  modalImage.innerHTML = `<img src="${t.extraImg || t.img}" alt="${escapeHtml(t.title)}" />`;
-
-  // Info derecha
   document.getElementById('modal-title').textContent = t.title;
-  document.getElementById('modal-meta').textContent = `${t.meta || ''} • Duración: ${t.duracion || 'No especificada'}`;
+  document.getElementById('modal-meta').textContent = `${t.meta} • ${t.duracion}`;
+  document.getElementById('modal-image').innerHTML = `<img src="${t.extraImg || t.img}" alt="${t.title}" />`;
 
-  // Precio (condicional)
-  let precioHTML = '';
+  let precios = '';
   if (t.precioCompartido && t.precioPrivado) {
-    precioHTML = `
-      <p><strong>Precio compartido:</strong> ${t.precioCompartido}</p>
-      <p><strong>Precio privado:</strong> ${t.precioPrivado}</p>
-    `;
+    precios = `<p><strong>Precio compartido:</strong> ${t.precioCompartido}</p>
+               <p><strong>Precio privado:</strong> ${t.precioPrivado}</p>`;
   } else if (t.precio) {
-    precioHTML = `<p><strong>Precio:</strong> ${t.precio}</p>`;
-  } else {
-    precioHTML = `<p><strong>Precio:</strong> Consultar</p>`;
+    precios = `<p><strong>Precio:</strong> ${t.precio}</p>`;
   }
 
-  document.getElementById('modal-desc').innerHTML = `<p>${t.longDesc || t.short}</p>${precioHTML}`;
+  document.getElementById('modal-desc').innerHTML = `<p>${t.longDesc}</p>${precios}`;
 
-  // Rellenar select de tarifa para el formulario
+  document.getElementById('modal-detalle').classList.add('show');
+}
+window.openDetail = openDetail;
+
+// Abre modal de reserva directamente desde la tarjeta
+function openReserva(id) {
+  const t = tours.find(x => x.id === id);
+  if (!t) return;
+  currentTour = t;
+
+  prepareReservaForm();
+  document.getElementById('modal-reserva').classList.add('show');
+}
+window.openReserva = openReserva;
+
+// Prepara el formulario de reserva con las tarifas
+function prepareReservaForm() {
   const tarifa = document.getElementById('tarifa');
   tarifa.innerHTML = '';
-  if (t.precioCompartido && t.precioPrivado) {
+
+  if (currentTour.precioCompartido && currentTour.precioPrivado) {
     tarifa.innerHTML = `
-      <option value="Compartido|${t.precioCompartido}">Compartido — ${t.precioCompartido}</option>
-      <option value="Privado|${t.precioPrivado}">Privado — ${t.precioPrivado}</option>
+      <option value="Compartido|${currentTour.precioCompartido}">Compartido — ${currentTour.precioCompartido}</option>
+      <option value="Privado|${currentTour.precioPrivado}">Privado — ${currentTour.precioPrivado}</option>
     `;
-    tarifa.disabled = false;
-  } else if (t.precio) {
-    tarifa.innerHTML = `<option value="Unico|${t.precio}">Precio — ${t.precio}</option>`;
-    tarifa.disabled = true;
+  } else if (currentTour.precio) {
+    tarifa.innerHTML = `<option value="Único|${currentTour.precio}">Precio — ${currentTour.precio}</option>`;
   } else {
-    tarifa.innerHTML = `<option value="Consultar|Sin precio">Consultar — Solicitar precio</option>`;
-    tarifa.disabled = true;
+    tarifa.innerHTML = `<option value="Consultar|">Consultar precio</option>`;
   }
-
-  // Mostrar modal
-  document.getElementById('modal').classList.add('show');
-
-  // colocar foco en nombre para mejor UX
-  setTimeout(() => {
-    const nombre = document.getElementById('nombre');
-    if (nombre) nombre.focus();
-  }, 150);
-}
-window.openDetail = openDetail; // global para onclick inline
-
-// Abrir modal y llevar al formulario (desde botón "Reservar" en la tarjeta)
-function openBooking(id) {
-  openDetail(id);
-  // luego hacer scroll al formulario dentro del modal
-  setTimeout(() => {
-    const form = document.getElementById('booking-form');
-    if (form) form.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    const nombre = document.getElementById('nombre');
-    if (nombre) nombre.focus();
-  }, 250);
-}
-window.openBooking = openBooking; // global para onclick inline
-
-// Filtrado
-function filter() {
-  const q = document.getElementById('search').value.toLowerCase();
-  const type = document.getElementById('type').value;
-
-  const filtered = tours.filter(t => {
-    const matchQuery = t.title.toLowerCase().includes(q) || (t.short && t.short.toLowerCase().includes(q));
-    const matchType = type === 'all' ? true : (t.type && t.type.toLowerCase() === type.toLowerCase());
-    return matchQuery && matchType;
-  });
-
-  render(filtered);
 }
 
-// Escapado básico para evitar inyección de HTML en textos
+// Escapar HTML básico
 function escapeHtml(text) {
   if (!text) return '';
   return String(text)
@@ -195,91 +140,79 @@ function escapeHtml(text) {
     .replaceAll("'", '&#039;');
 }
 
-// Inicialización después de que DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-  // Render inicial
+// Eventos del DOM
+document.addEventListener('DOMContentLoaded', () => {
   render(tours);
 
-  // Cierra modal (botón X)
-  const modalClose = document.getElementById('modal-close');
-  if (modalClose) {
-    modalClose.addEventListener('click', () => {
-      document.getElementById('modal').classList.remove('show');
-    });
-  }
+  // Cerrar modal detalle
+  document.getElementById('modal-close-detalle').addEventListener('click', () => {
+    document.getElementById('modal-detalle').classList.remove('show');
+  });
 
-  // Botón cancelar dentro del formulario
-  const closeBooking = document.getElementById('close-booking');
-  if (closeBooking) {
-    closeBooking.addEventListener('click', () => {
-      document.getElementById('modal').classList.remove('show');
-    });
-  }
+  // Botón "Reservar" dentro de modal detalle
+  document.getElementById('btn-reservar').addEventListener('click', () => {
+    document.getElementById('modal-detalle').classList.remove('show');
+    prepareReservaForm();
+    document.getElementById('modal-reserva').classList.add('show');
+  });
 
-  // Botón limpiar controles
-  const clearBtn = document.getElementById('clear');
-  if (clearBtn) {
-    clearBtn.addEventListener('click', () => {
-      document.getElementById('search').value = '';
-      document.getElementById('type').value = 'all';
-      filter();
-    });
-  }
+  // Cerrar modal reserva
+  document.getElementById('modal-close-reserva').addEventListener('click', () => {
+    document.getElementById('modal-reserva').classList.remove('show');
+  });
 
-  // Input search + type
-  const searchInput = document.getElementById('search');
-  if (searchInput) searchInput.addEventListener('input', filter);
-  const typeSelect = document.getElementById('type');
-  if (typeSelect) typeSelect.addEventListener('change', filter);
+  // Enviar formulario
+  document.getElementById('booking-form').addEventListener('submit', e => {
+    e.preventDefault();
 
-  // Brochure (simulación)
-  const brochure = document.getElementById('brochure');
-  if (brochure) {
-    brochure.addEventListener('click', () => {
-      alert('Se descargará un folleto con la información del tour (simulación).');
-    });
-  }
+    if (!currentTour) {
+      alert('Primero selecciona un tour.');
+      return;
+    }
 
-  // Envío del formulario -> abre WhatsApp
-  const bookingForm = document.getElementById('booking-form');
-  if (bookingForm) {
-    bookingForm.addEventListener('submit', function(e) {
-      e.preventDefault();
+    const nombre = document.getElementById('nombre').value.trim();
+    const correo = document.getElementById('correo').value.trim();
+    const fecha = document.getElementById('fecha').value;
+    const personas = document.getElementById('personas').value;
+    const comentarios = document.getElementById('comentarios').value.trim();
+    const [tipoTarifa, precioSeleccionado] = (document.getElementById('tarifa').value || '').split('|');
 
-      if (!currentTour) {
-        alert('Por favor, primero abre el detalle del tour y luego envía la reserva.');
-        return;
-      }
+    let mensaje = `Hola 👋, soy *${nombre}*.\n`;
+    mensaje += `Quiero reservar el tour: *${currentTour.title}*.\n`;
+    if (tipoTarifa) mensaje += `Tarifa: ${tipoTarifa} ${precioSeleccionado || ''}\n`;
+    mensaje += `Fecha: ${fecha}\n`;
+    mensaje += `Personas: ${personas}\n`;
+    mensaje += `Correo: ${correo}\n`;
+    if (comentarios) mensaje += `Comentarios: ${comentarios}\n`;
 
-      const nombre = document.getElementById('nombre').value.trim();
-      const correo = document.getElementById('correo').value.trim();
-      const fecha = document.getElementById('fecha').value;
-      const personas = document.getElementById('personas').value;
-      const comentarios = document.getElementById('comentarios').value.trim();
-      const tarifaVal = document.getElementById('tarifa').value || '';
+    const telefono = "573247615677"; // tu número
+    const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
 
-      // tarifaVal formato: "Tipo|Precio" (ej. "Compartido|$90.000 COP")
-      const [tipoTarifa, precioSeleccionado] = tarifaVal.split('|');
+    document.getElementById('modal-reserva').classList.remove('show');
+  });
 
-      let mensaje = `Hola 👋, soy *${nombre}*.\n`;
-      mensaje += `Quiero reservar: *${currentTour.title}*.\n`;
-      if (tipoTarifa) mensaje += `Tarifa: ${tipoTarifa} — ${precioSeleccionado || ''}\n`;
-      mensaje += `Fecha: ${fecha}\n`;
-      mensaje += `Personas: ${personas}\n`;
-      if (correo) mensaje += `Correo: ${correo}\n`;
-      if (comentarios) mensaje += `Comentarios: ${comentarios}\n`;
-      mensaje += `\nID Tour: ${currentTour.id}`;
-
-      // Número de WhatsApp (formato internacional sin +). Cambia aquí si lo necesitas.
-      const telefono = "573247615677";
-
-      const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
-
-      // abrir WhatsApp en nueva ventana/pestaña
-      window.open(url, '_blank');
-
-      // opcional: cerrar modal
-      document.getElementById('modal').classList.remove('show');
-    });
-  }
+  // Búsqueda y filtros
+  document.getElementById('search').addEventListener('input', filter);
+  document.getElementById('type').addEventListener('change', filter);
+  document.getElementById('clear').addEventListener('click', () => {
+    document.getElementById('search').value = '';
+    document.getElementById('type').value = 'all';
+    filter();
+  });
 });
+
+// Filtro de tours
+function filter() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const type = document.getElementById('type').value;
+
+  const filtered = tours.filter(t => {
+    const matchQuery = t.title.toLowerCase().includes(q) || t.short.toLowerCase().includes(q);
+    const matchType = type === 'all' ? true : (t.type && t.type.toLowerCase() === type.toLowerCase());
+    return matchQuery && matchType;
+  });
+
+  render(filtered);
+}
+
