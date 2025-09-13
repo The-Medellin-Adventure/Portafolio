@@ -8,7 +8,8 @@ const tours = [
     img: 'img/360.png',
    extraImg: 'img/citytour_extra.jpg', // Nueva imagen para la tarjeta del modal
    meta: 'Compartido y Privado',
-   precio: '$90.000 COP',
+   precioCompartido: '$90.000 COP',
+   precioPrivado: '$350.000 COP',
    duracion: '4 horas aprox',
    longDesc: 'Este tour incluye transporte privado, guía bilingüe y visita a los principales íconos de la ciudad. Ideal para conocer la cultura paisa en un recorrido dinámico y seguro.'
 },
@@ -176,10 +177,11 @@ function openDetail(id) {
   document.getElementById('modal-title').textContent = t.title;
   document.getElementById('modal-meta').textContent = `${t.meta || ''} • Duración: ${t.duracion || 'No especificada'}`;
 
-  document.getElementById('modal-desc').innerHTML = `
-    <p>${t.longDesc || t.short}</p>
-    <p><strong>Precio:</strong> ${t.precio || 'Consulta con nosotros'}</p>
-  `;
+document.getElementById('modal-desc').innerHTML = `
+  <p>${t.longDesc || t.short}</p>
+  <p><strong>Precio compartido:</strong> ${t.precioCompartido || 'No disponible'}</p>
+  <p><strong>Precio privado:</strong> ${t.precioPrivado || 'No disponible'}</p>
+`;
 
   modal.classList.add('show');
 }
