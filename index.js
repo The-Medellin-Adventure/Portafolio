@@ -8,7 +8,7 @@ const tours = [
     img: 'img/360.png',
    extraImg: 'img/virtual.png', // Nueva imagen para la tarjeta del modal
    meta: 'Enlace virtual',
-   precioCompartido: '$40.000 COP',
+   precio: '$40.000 COP',
    duracion: '1 horas aprox',
    longDesc: 'Este tour incluye transporte privado, guía bilingüe y visita a los principales íconos de la ciudad. Ideal para conocer la cultura paisa en un recorrido dinámico y seguro.'
 },
@@ -19,7 +19,8 @@ const tours = [
     short: 'Recorrido por los puntos más icónicos de Medellín: Plaza Botero, Pueblito Paisa y miradores.',
     img: 'https://source.unsplash.com/featured/?medellin,city',
     meta: 'Compartido y Privado',
-    precio: '$90.000 COP',
+    precioCompartido: '$90.000 COP',
+    precioPrivado: '$350.000 COP',
     duracion: '4 horas aprox',
     url: 'https://themedellinadventure-com.webnode.com.co/city-tour-medellin/'
   },
@@ -176,10 +177,20 @@ function openDetail(id) {
   document.getElementById('modal-title').textContent = t.title;
   document.getElementById('modal-meta').textContent = `${t.meta || ''} • Duración: ${t.duracion || 'No especificada'}`;
 
+let precioHTML = '';
+if (t.precioCompartido && t.precioPrivado) {
+  precioHTML = `
+    <p><strong>Precio compartido:</strong> ${t.precioCompartido}</p>
+    <p><strong>Precio privado:</strong> ${t.precioPrivado}</p>
+  `;
+} else if (t.precio) {
+  precioHTML = `<p><strong>Precio:</strong> ${t.precio}</p>`;
+}
+
+  
 document.getElementById('modal-desc').innerHTML = `
   <p>${t.longDesc || t.short}</p>
-  <p><strong>Precio compartido:</strong> ${t.precioCompartido || 'No disponible'}</p>
-  <p><strong>Precio privado:</strong> ${t.precioPrivado || 'No disponible'}</p>
+  ${precioHTML}
 `;
 
   modal.classList.add('show');
