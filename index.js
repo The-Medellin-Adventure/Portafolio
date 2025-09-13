@@ -30,7 +30,7 @@ const tours = [
     short: 'Tour cultural por la Comuna 13 con arte urbano, escaleras eléctricas y comunidad local.',
     img: 'https://source.unsplash.com/featured/?comuna13,graffiti',
     meta: 'Compartido y Privado',
-    precio: '$90.000 COP' <br> 350.000 cop Privado,
+    precio: '$90.000 COP' <br> '350.000 cop Privado',
     duracion: '4 horas aprox',
     url: 'https://themedellinadventure-com.webnode.com.co/city-tour-y-comuna-13/'
   },
