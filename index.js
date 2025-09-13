@@ -1,4 +1,4 @@
-// index.js - versión final con header oculto en modales y campos extra en reserva
+// index.js - corregido: prepara tarifa si falta, rellena tour, y añade handler para "Descargar info"
 
 const tours = [
   {
@@ -42,7 +42,14 @@ const tours = [
 
 let currentTour = null;
 
-// Helpers para ocultar/mostrar el header
+// mapa de brochures (aquí defines los links o PDFs por id de tour)
+const infoLinks = {
+  1: 'docs/medellin360.pdf',
+  2: 'docs/citytour.pdf',
+  3: 'docs/graffitour.pdf'
+};
+
+// Helpers para ocultar/mostrar header
 function hideHeader() {
   const header = document.querySelector('header');
   if (header) header.style.display = 'none';
@@ -52,7 +59,7 @@ function showHeader() {
   if (header) header.style.display = 'flex';
 }
 
-// Renderiza las tarjetas
+// Render tarjetas
 function render(list) {
   const grid = document.getElementById('tours-grid');
   const empty = document.getElementById('empty');
@@ -86,13 +93,15 @@ function render(list) {
   });
 }
 
-// Abrir modal de detalle
+// abrir detalle
 function openDetail(id) {
   const t = tours.find(x => x.id === id);
   if (!t) return;
   currentTour = t;
 
-  document.getElementById('modal-title').textContent = t.title; // 👈 título
+  const titleEl = document.getElementById('modal-title');
+  if (titleEl) titleEl.textContent = t.title;
+
   document.getElementById('modal-meta').textContent = `${t.meta} • ${t.duracion}`;
   document.getElementById('modal-image').innerHTML = `<img src="${t.extraImg || t.img}" alt="${t.title}" />`;
 
@@ -111,22 +120,57 @@ function openDetail(id) {
 }
 window.openDetail = openDetail;
 
-// Abrir modal de reserva
+// abrir reserva (desde tarjeta o desde detalle)
 function openReserva(id) {
   const t = tours.find(x => x.id === id);
   if (!t) return;
   currentTour = t;
 
   prepareReservaForm();
+  // prefill campo tour si existe
+  const tourInput = document.getElementById('tour');
+  if (tourInput) tourInput.value = currentTour.title;
+
   document.getElementById('modal-reserva').classList.add('show');
   hideHeader();
 }
 window.openReserva = openReserva;
 
-// Prepara las opciones de tarifas
+// prepara select tarifa (si el select no existe lo crea)
 function prepareReservaForm() {
-  const tarifa = document.getElementById('tarifa');
-  tarifa.innerHTML = '';
+  let tarifa = document.getElementById('tarifa');
+
+  if (!tarifa) {
+    // crear label + select antes del input telefono
+    const phone = document.getElementById('telefono');
+    if (phone && phone.parentNode) {
+      const label = document.createElement('label');
+      label.htmlFor = 'tarifa';
+      label.textContent = '💲 Tarifa';
+      const select = document.createElement('select');
+      select.id = 'tarifa';
+      phone.parentNode.insertBefore(label, phone);
+      phone.parentNode.insertBefore(select, phone);
+      tarifa = select;
+    } else {
+      // no hay telefono: intentar encontrar el form y añadir al final
+      const form = document.getElementById('booking-form');
+      if (form) {
+        const label = document.createElement('label');
+        label.htmlFor = 'tarifa';
+        label.textContent = '💲 Tarifa';
+        const select = document.createElement('select');
+        select.id = 'tarifa';
+        form.insertBefore(label, form.firstChild);
+        form.insertBefore(select, label.nextSibling);
+        tarifa = select;
+      }
+    }
+  }
+
+  if (!tarifa) return; // si aún no existe, salimos
+
+  tarifa.innerHTML = ''; // limpiar
 
   if (currentTour.precioCompartido && currentTour.precioPrivado) {
     tarifa.innerHTML = `
@@ -138,9 +182,13 @@ function prepareReservaForm() {
   } else {
     tarifa.innerHTML = `<option value="Consultar|">Consultar precio</option>`;
   }
+
+  // rellenar el campo tour si existe
+  const tourInput = document.getElementById('tour');
+  if (tourInput) tourInput.value = currentTour.title || '';
 }
 
-// Escapar HTML
+// escape básico
 function escapeHtml(text) {
   if (!text) return '';
   return String(text)
@@ -151,90 +199,126 @@ function escapeHtml(text) {
     .replaceAll("'", '&#039;');
 }
 
-// Inicialización
+// init
 document.addEventListener('DOMContentLoaded', () => {
   render(tours);
 
   // Cerrar detalle
-  document.getElementById('modal-close-detalle').addEventListener('click', () => {
-    document.getElementById('modal-detalle').classList.remove('show');
-    showHeader();
-  });
-
-  // Reservar desde detalle
-  document.getElementById('btn-reservar').addEventListener('click', () => {
-    document.getElementById('modal-detalle').classList.remove('show');
-    prepareReservaForm();
-    document.getElementById('modal-reserva').classList.add('show');
-    hideHeader();
-  });
-
-  // Cerrar reserva
-  document.getElementById('modal-close-reserva').addEventListener('click', () => {
-    document.getElementById('modal-reserva').classList.remove('show');
-    if (currentTour) {
-      openDetail(currentTour.id);
-    } else {
+  const closeDetalle = document.getElementById('modal-close-detalle');
+  if (closeDetalle) {
+    closeDetalle.addEventListener('click', () => {
+      document.getElementById('modal-detalle').classList.remove('show');
       showHeader();
-    }
-  });
+    });
+  }
 
-  // Envío de formulario a WhatsApp
-  document.getElementById('booking-form').addEventListener('submit', e => {
-    e.preventDefault();
+  // Reservar dentro del detalle (botón)
+  const btnReservar = document.getElementById('btn-reservar');
+  if (btnReservar) {
+    btnReservar.addEventListener('click', () => {
+      document.getElementById('modal-detalle').classList.remove('show');
+      prepareReservaForm();
+      const tourInput = document.getElementById('tour');
+      if (tourInput && currentTour) tourInput.value = currentTour.title;
+      document.getElementById('modal-reserva').classList.add('show');
+      hideHeader();
+    });
+  }
 
-    if (!currentTour) {
-      alert('Primero selecciona un tour.');
-      return;
-    }
+  // Cerrar reserva (volver a detalle si corresponde)
+  const closeReserva = document.getElementById('modal-close-reserva');
+  if (closeReserva) {
+    closeReserva.addEventListener('click', () => {
+      document.getElementById('modal-reserva').classList.remove('show');
+      if (currentTour) {
+        openDetail(currentTour.id);
+      } else {
+        showHeader();
+      }
+    });
+  }
 
-    const nombre = document.getElementById('nombre').value.trim();
-    const correo = document.getElementById('correo').value.trim();
-    const telefonoCliente = document.getElementById('telefono').value.trim();
-    const idioma = document.getElementById('idioma').value;
-    const fecha = document.getElementById('fecha').value;
-    const personas = document.getElementById('personas').value;
-    const comentarios = document.getElementById('comentarios').value.trim();
-    const [tipoTarifa, precioSeleccionado] = (document.getElementById('tarifa').value || '').split('|');
+  // handler botón brochure (descargar info)
+  const brochureBtn = document.getElementById('brochure');
+  if (brochureBtn) {
+    brochureBtn.addEventListener('click', () => {
+      if (!currentTour) {
+        alert('Selecciona un tour primero.');
+        return;
+      }
+      const link = infoLinks[currentTour.id];
+      if (link) {
+        window.open(link, '_blank');
+      } else {
+        alert('No hay brochure disponible para este tour.');
+      }
+    });
+  }
 
-    let mensaje = `Hola 👋, soy *${nombre}*.\n`;
-    mensaje += `Quiero reservar el tour: *${currentTour.title}*.\n`;
-    if (tipoTarifa) mensaje += `Tarifa: ${tipoTarifa} ${precioSeleccionado || ''}\n`;
-    mensaje += `Fecha: ${fecha}\n`;
-    mensaje += `Personas: ${personas}\n`;
-    mensaje += `Correo: ${correo}\n`;
+  // envío form -> WhatsApp
+  const bookingForm = document.getElementById('booking-form');
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', e => {
+      e.preventDefault();
 
-    // Nuevos campos
-    if (telefonoCliente) mensaje += `Teléfono: ${telefonoCliente}\n`;
-    if (idioma) mensaje += `Idioma preferido: ${idioma}\n`;
+      // preferimos currentTour, pero si no existe usamos el campo "tour"
+      const tourFromField = document.getElementById('tour') ? document.getElementById('tour').value.trim() : '';
+      if (!currentTour && !tourFromField) {
+        alert('Selecciona un tour o escribe el nombre del tour.');
+        return;
+      }
 
-    if (comentarios) mensaje += `Comentarios: ${comentarios}\n`;
+      const nombre = document.getElementById('nombre').value.trim();
+      const correo = document.getElementById('correo').value.trim();
+      const telefonoCliente = document.getElementById('telefono').value.trim();
+      const idioma = document.getElementById('idioma').value;
+      const fecha = document.getElementById('fecha').value;
+      const personas = document.getElementById('personas').value;
+      const comentarios = document.getElementById('comentarios').value.trim();
+      const tarifaVal = document.getElementById('tarifa') ? document.getElementById('tarifa').value : '';
+      const [tipoTarifa, precioSeleccionado] = (tarifaVal || '').split('|');
 
-    const telefono = "573247615677"; // tu número de WhatsApp
-    const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
-    window.open(url, '_blank');
+      const tourName = currentTour ? currentTour.title : tourFromField;
 
-    document.getElementById('modal-reserva').classList.remove('show');
-    showHeader();
-  });
+      let mensaje = `Hola 👋, soy *${nombre}*.\n`;
+      mensaje += `Quiero reservar el tour: *${tourName}*.\n`;
+      if (tipoTarifa) mensaje += `Tarifa: ${tipoTarifa} ${precioSeleccionado || ''}\n`;
+      mensaje += `Fecha: ${fecha}\n`;
+      mensaje += `Personas: ${personas}\n`;
+      mensaje += `Correo: ${correo}\n`;
+      if (telefonoCliente) mensaje += `Teléfono: ${telefonoCliente}\n`;
+      if (idioma) mensaje += `Idioma preferido: ${idioma}\n`;
+      if (comentarios) mensaje += `Comentarios: ${comentarios}\n`;
 
-  // Filtros
-  document.getElementById('search').addEventListener('input', filter);
-  document.getElementById('type').addEventListener('change', filter);
-  document.getElementById('clear').addEventListener('click', () => {
+      const telefono = "573247615677"; // tu número
+      const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
+
+      document.getElementById('modal-reserva').classList.remove('show');
+      showHeader();
+    });
+  }
+
+  // filtros
+  const searchInput = document.getElementById('search');
+  if (searchInput) searchInput.addEventListener('input', filter);
+  const typeSelect = document.getElementById('type');
+  if (typeSelect) typeSelect.addEventListener('change', filter);
+  const clearBtn = document.getElementById('clear');
+  if (clearBtn) clearBtn.addEventListener('click', () => {
     document.getElementById('search').value = '';
     document.getElementById('type').value = 'all';
     filter();
   });
 });
 
-// Filtrado de tours
+// filtro
 function filter() {
-  const q = document.getElementById('search').value.toLowerCase();
-  const type = document.getElementById('type').value;
+  const q = (document.getElementById('search') ? document.getElementById('search').value.toLowerCase() : '');
+  const type = (document.getElementById('type') ? document.getElementById('type').value : 'all');
 
   const filtered = tours.filter(t => {
-    const matchQuery = t.title.toLowerCase().includes(q) || t.short.toLowerCase().includes(q);
+    const matchQuery = t.title.toLowerCase().includes(q) || (t.short && t.short.toLowerCase().includes(q));
     const matchType = type === 'all' ? true : (t.type && t.type.toLowerCase() === type.toLowerCase());
     return matchQuery && matchType;
   });
