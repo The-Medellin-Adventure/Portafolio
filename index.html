@@ -137,7 +137,19 @@
           <button class="close" id="modal-close">×</button>
         </div>
         <p id="modal-meta"></p>
-        <div id="modal-desc"></div>
+       <!-- Formulario de reserva -->
+<div class="modal-cta" style="margin-top:15px">
+  <form id="booking-form" style="display:flex;flex-direction:column;gap:10px;width:100%">
+    <input type="text" id="nombre" placeholder="Tu nombre" required />
+    <input type="email" id="correo" placeholder="Tu correo" required />
+    <input type="date" id="fecha" required />
+    <input type="number" id="personas" min="1" value="1" required />
+    <textarea id="comentarios" placeholder="Comentarios adicionales"></textarea>
+    <button type="submit" class="btn cta">Enviar a WhatsApp</button>
+  </form>
+  <button id="brochure" class="btn">Descargar info</button>
+</div>
+
 
         <!-- Formulario de reserva -->
         <div class="modal-cta" style="margin-top:15px">
