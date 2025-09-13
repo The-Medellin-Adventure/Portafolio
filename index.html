@@ -72,6 +72,7 @@
       position: fixed; inset: 0; display: none;
       align-items: center; justify-content: center;
       background: rgba(2, 6, 23, 0.5); padding: 28px;
+      z-index: 2000; /* para estar encima del header */
     }
     .modal.show { display: flex; }
     .modal-content {
@@ -92,12 +93,10 @@
       .modal-grid { grid-template-columns: 1fr; }
       .modal-right { padding: 14px; }
     }
-    /* pequeños ajustes visuales del formulario dentro del modal */
     #booking-form input, #booking-form textarea, #booking-form select {
       width: 100%;
       box-sizing: border-box;
     }
-    #tarifa { margin-top: 6px; }
   </style>
 </head>
 <body>
@@ -106,7 +105,7 @@
       <img src="img/logo.png" alt="The Medellín Adventure" />
       <h1>Portafolio de Tours — The Medellín Adventure</h1>
     </header>
-    <p class="lead">The Medellín Adventure somos una empresa turística dedicada a brindar experiencias inolvidables. Ofrecemos recorridos guiados por la ciudad de Medellín y sus alrededores, explorando parques, comunas, miradores y municipios cercanos, con aventuras llenas de cultura, diversión y adrenalina.</p>
+    <p class="lead">The Medellín Adventure somos una empresa turística dedicada a brindar experiencias inolvidables. Ofrecemos recorridos guiados por Medellín y alrededores: parques, comunas, miradores y municipios cercanos.</p>
   </div>
 
   <section class="controls" aria-label="Controles">
@@ -134,54 +133,49 @@
   </footer>
 
   <!-- Modal DETALLE -->
-<div id="modal-detalle" class="modal" role="dialog" aria-modal="true">
-  <div class="modal-content">
-    <div class="modal-grid">
-      <!-- Imagen izquierda -->
-      <div id="modal-image"><img src="" alt="Imagen del tour" /></div>
-
-      <!-- Info derecha -->
-      <div class="modal-right">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <h3 id="modal-title">Título</h3>
+  <div id="modal-detalle" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <div class="modal-grid">
+        <div id="modal-image"><img src="" alt="Imagen del tour" /></div>
+        <div class="modal-right">
           <button class="close" id="modal-close-detalle">×</button>
-        </div>
-
-        <p id="modal-meta" style="color:var(--muted);margin:0 0 10px"></p>
-        <div id="modal-desc" style="margin-bottom:10px"></div>
-
-        <!-- Botones -->
-        <div class="modal-cta">
-          <button id="btn-reservar" class="btn cta">Reservar</button>
-          <button id="brochure" class="btn">Descargar info</button>
+          <p id="modal-meta" style="color:var(--muted);margin:0 0 10px"></p>
+          <div id="modal-desc" style="margin-bottom:10px"></div>
+          <div class="modal-cta">
+            <button id="btn-reservar" class="btn cta">Reservar</button>
+            <button id="brochure" class="btn">Descargar info</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Modal RESERVA -->
-<div id="modal-reserva" class="modal" role="dialog" aria-modal="true">
-  <div class="modal-content" style="max-width:500px">
-    <div style="padding:20px">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <h3>Reserva tu tour</h3>
-        <button class="close" id="modal-close-reserva">×</button>
+  <!-- Modal RESERVA -->
+  <div id="modal-reserva" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content" style="max-width:500px">
+      <div style="padding:20px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3>Reserva tu tour</h3>
+          <button class="close" id="modal-close-reserva">×</button>
+        </div>
+        <form id="booking-form" style="display:flex;flex-direction:column;gap:12px;margin-top:15px">
+          <input type="text" id="nombre" placeholder="Tu nombre" required />
+          <input type="email" id="correo" placeholder="Tu correo" required />
+          <select id="tarifa"></select>
+          <input type="tel" id="telefono" placeholder="Ej: +57 3001234567" required />
+          <select id="idioma" required>
+            <option value="Español">Español</option>
+            <option value="Inglés">English</option>
+          </select>
+          <input type="date" id="fecha" required />
+          <input type="number" id="personas" min="1" value="1" required />
+          <textarea id="comentarios" placeholder="Comentarios adicionales"></textarea>
+          <button type="submit" class="btn cta">Enviar a WhatsApp</button>
+        </form>
       </div>
-      <form id="booking-form" style="display:flex;flex-direction:column;gap:12px;margin-top:15px">
-        <input type="text" id="nombre" placeholder="Tu nombre" required />
-        <input type="email" id="correo" placeholder="Tu correo" required />
-        <select id="tarifa"></select>
-        <input type="date" id="fecha" required />
-        <input type="number" id="personas" min="1" value="1" required />
-        <textarea id="comentarios" placeholder="Comentarios adicionales"></textarea>
-        <button type="submit" class="btn cta">Enviar a WhatsApp</button>
-      </form>
     </div>
   </div>
-</div>
 
-  <!-- Script principal -->
   <script src="index.js"></script>
 </body>
 </html>
