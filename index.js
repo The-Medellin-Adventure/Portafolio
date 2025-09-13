@@ -229,3 +229,35 @@ render(tours);
 document.getElementById('brochure').addEventListener('click', () => {
   alert('Se descargará un folleto con la información del tour (simulación).');
 });
+
+// Abrir formulario de reserva al dar clic en "Reservar"
+document.getElementById('reserve-link').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('booking-form').scrollIntoView({ behavior: "smooth" });
+});
+
+// Cerrar reserva
+document.getElementById('close-booking').addEventListener('click', () => {
+  document.getElementById('modal').classList.remove('show');
+});
+
+// Enviar formulario a WhatsApp
+document.getElementById('booking-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const nombre = document.getElementById('nombre').value;
+  const correo = document.getElementById('correo').value;
+  const fecha = document.getElementById('fecha').value;
+  const personas = document.getElementById('personas').value;
+  const comentarios = document.getElementById('comentarios').value;
+
+  const mensaje = `Hola 👋, soy ${nombre}.
+Quiero reservar un tour el ${fecha} para ${personas} persona(s).
+📧 Correo: ${correo}
+📝 Comentarios: ${comentarios}`;
+
+  const telefono = "573247615677"; // tu número en formato internacional
+  const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+  window.open(url, '_blank');
+});
