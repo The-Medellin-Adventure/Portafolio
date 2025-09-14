@@ -43,7 +43,7 @@ const tours = [
     id: 4,
     title: 'Guatapé',
     type: 'Compartido / Privado',
-    short: 'Conoce un colorido pueblo rodeado de naturaleza, famoso por sus zócalos vibrantes y la imponente Piedra del Peñol, desde donde se disfruta una de las mejores vistas de Colombia.',
+    short: 'Conoce un colorido pueblo rodeado de naturaleza, famoso por sus zócalos y la imponente Piedra del Peñol.',
     img: 'img/guatape.png',
     extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
     meta: 'Compartido / Privado',
@@ -54,15 +54,15 @@ const tours = [
   },
 {
     id: 5,
-    title: 'Guatapé',
+    title: 'Tour del Café',
     type: 'Compartido / Privado',
-    short: 'Conoce un colorido pueblo rodeado de naturaleza, famoso por sus zócalos vibrantes y la imponente Piedra del Peñol, desde donde se disfruta una de las mejores vistas de Colombia.',
-    img: 'img/guatape.png',
+    short: 'Vive la experiencia del café desde la semilla hasta la taza, en un tour inmersivo por fincas cafeteras rodeadas de naturaleza.',
+    img: 'img/cafe.png',
     extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
     meta: 'Compartido / Privado',
-    precioCompartido: '$180.000 COP',
-    precioPrivado: '$635.000 COP',
-    duracion: '10 horas aprox',
+    precioCompartido: '$200.000 COP',
+    precioPrivado: '$500.000 COP',
+    duracion: '6 horas aprox',
     longDesc: 'Conoce un pintoresco pueblo famoso por sus coloridos zócalos y la imponente Piedra del Peñol. Además de disfrutar la vista panorámica desde lo alto de la roca, los visitantes pueden recorrer en barco la represa, navegando entre islas y paisajes naturales únicos, mientras conocen la historia del lugar y disfrutan de una experiencia tranquila y llena de encanto.'
   }
 
