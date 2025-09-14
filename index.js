@@ -90,6 +90,18 @@ const tours = [
     longDesc: 'El tour por Santa Fe de Antioquia te transporta al pasado con sus calles empedradas, casas coloniales y encantadoras plazas. A solo una hora y media de Medellín, este recorrido incluye la visita al icónico Puente de Occidente, iglesias históricas y museos locales, todo acompañado por una guía que narra la historia de uno de los pueblos más antiguos y emblemáticos de Colombia. Ideal para quienes buscan cultura, historia y un entorno pintoresco.'
   },
   {
+    id: 8,
+    title: 'Vuleta a Oriente',
+    type: 'Privado',
+    short: 'Pueblo colonial con arquitectura y puentes históricos.',
+    img: 'santafe.png',
+    extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
+    meta: 'Privado',
+    precio: '$550.000 COP',
+    duracion: '6 horas aprox.',
+    longDesc: 'El tour por Santa Fe de Antioquia te transporta al pasado con sus calles empedradas, casas coloniales y encantadoras plazas. A solo una hora y media de Medellín, este recorrido incluye la visita al icónico Puente de Occidente, iglesias históricas y museos locales, todo acompañado por una guía que narra la historia de uno de los pueblos más antiguos y emblemáticos de Colombia. Ideal para quienes buscan cultura, historia y un entorno pintoresco.'
+  },
+  {
     id: 9,
     title: 'Rio Claro',
     type: 'privado',
