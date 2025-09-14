@@ -24,19 +24,20 @@ const tours = [
     precioCompartido: '$90.000 COP',
     precioPrivado: '$350.000 COP',
     duracion: '4 horas',
-    longDesc: 'Descubre lo mejor de Medellín en un city tour guiado que te lleva por sus lugares más representativos, combinando cultura, historia y movilidad innovadora. Visita sitios icónicos como el Pueblito Paisa y la Plaza Botero, y vive la experiencia de recorrer la ciudad a bordo de su moderno sistema de transporte: el Metro, el Tranvía y el Metrocable. Acompañado por un guía experto, conocerás de cerca la transformación urbana de Medellín y su compromiso con la inclusión y el desarrollo sostenible. Ideal para quienes desean explorar la ciudad de forma auténtica y enriquecedora.'
+    longDesc: 'Descubre lo mejor de Medellín en un city tour guiado que te lleva por sus lugares más representativos, combinando cultura, historia y movilidad innovadora. Visita sitios icónicos como el Pueblito Paisa y la Plaza Botero, y vive la experiencia de recorrer la ciudad a bordo de su moderno sistema de transporte: el Metro, el Tranvía y el Metrocable. Acompañado por un guía experto, conocerás de cerca la transformación urbana de Medellín y su compromiso con la inclusión y el desarrollo sostenible.'
   },
   {
     id: 3,
     title: 'Graffitour - Comuna 13',
-    type: 'compartido',
+    type: 'Compartido',
     short: 'Tour cultural por la Comuna 13 con arte urbano y comunidad local.',
-    img: 'https://source.unsplash.com/featured/?comuna13,graffiti',
+    img: 'img/comuna.jpeg',
     extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
-    meta: 'Compartido',
-    precio: '$90.000 COP',
+    meta: 'Compartido / Privado',
+    precioCompartido: '$90.000 COP',
+    precioPrivado: '$350.000 COP',
     duracion: '4 horas',
-    longDesc: 'Recorrido por la historia y el arte urbano de la Comuna 13, con guías locales.'
+    longDesc: 'La Comuna 13 es un vibrante barrio de Medellín reconocido por su impresionante arte callejero, lleno de grafitis coloridos, murales con mensajes de resistencia y cultura, música en vivo, breakdance, trovas y una energía única. Sus famosas escaleras eléctricas al aire libre conectan a los visitantes con miradores espectaculares y una historia de transformación social. Es un recorrido lleno de vida, arte y esperanza..'
   }
 ];
 
