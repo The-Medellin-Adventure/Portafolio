@@ -139,7 +139,7 @@ const tours = [
     img: 'https://source.unsplash.com/featured/?atv,quad',
     meta: 'Privado',
     duracion: '1 día',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
+    url: 'https://themedellinadventure-com.webnode.com.co/reservar/',
     longDesc: 'Visita a finca cafetera con explicación del proceso del café, degustación y paseo por los cultivos.'
   }
 
