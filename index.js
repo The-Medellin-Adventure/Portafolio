@@ -74,7 +74,7 @@ const tours = [
     extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
     meta: 'Privado',
     precio: '$400.000 COP',
-    duracion: '6 horas aprox.',
+    duracion: '5 horas aprox.',
     longDesc: 'El Tour Casa de las Flores te sumerge en la tradición silletera, una de las expresiones culturales más emblemáticas de Medellín. En esta experiencia, visitarás una finca típica donde conocerás de cerca el arte de armar silletas, escucharás historias de los silleteros y descubrirás el profundo significado que tienen las flores en la identidad antioqueña. Un recorrido lleno de color, tradición y orgullo campesino.'
   },
   {
@@ -82,7 +82,7 @@ const tours = [
     title: 'Santa Fé de Antioquia',
     type: 'Privado',
     short: 'Pueblo colonial con arquitectura y puentes históricos.',
-    img: 'santafe.png',
+    img: 'imag/santafe.png',
     extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
     meta: 'Privado',
     precio: '$550.000 COP',
@@ -93,54 +93,59 @@ const tours = [
     id: 8,
     title: 'Vuleta a Oriente',
     type: 'Privado',
-    short: 'Pueblo colonial con arquitectura y puentes históricos.',
-    img: 'santafe.png',
+    short: 'Un recorrido que combina naturaleza, historia, pueblos con encanto y lo mejor de la gastronomía local.',
+    img: 'oriente.png',
     extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
     meta: 'Privado',
     precio: '$550.000 COP',
     duracion: '6 horas aprox.',
-    longDesc: 'El tour por Santa Fe de Antioquia te transporta al pasado con sus calles empedradas, casas coloniales y encantadoras plazas. A solo una hora y media de Medellín, este recorrido incluye la visita al icónico Puente de Occidente, iglesias históricas y museos locales, todo acompañado por una guía que narra la historia de uno de los pueblos más antiguos y emblemáticos de Colombia. Ideal para quienes buscan cultura, historia y un entorno pintoresco.'
+    longDesc: 'A lo largo del recorrido, viviremos una experiencia completa que nos permitirá disfrutar de paisajes naturales espectaculares, descubrir pueblos llenos de encanto, conocer su historia fascinante y deleitarnos con la auténtica gastronomía de la región. Ideal para conectar con lo más auténtico de la cultura local.'
   },
   {
     id: 9,
-    title: 'Rio Claro',
-    type: 'privado',
+    title: 'Parapente',
+    type: 'Privado',
     short: 'Vuelo en tándem sobre valles y paisajes; aventura y vistas únicas.',
-    img: 'https://source.unsplash.com/featured/?paragliding,parapente',
+    img: 'img/parapente.png',
+    extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
     meta: 'Privado',
-    duracion: '1 día',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
+    precio: '$550.000 COP',
+    duracion: '6 horas aprox.',
+    longDesc: 'Nuestra experiencia de paraglading te brindará la oportunidad de despegar desde colinas escarpadas y sobrevolar valles exuberantes, ríos serpenteantes y vistas panorámicas de belleza inigualable.'
   },
   {
     id: 10,
-    title: 'Parapente',
+    title: "Atv's - Cuatrimotos",
+    type: 'Privado',
+    short: 'Aventura off-road con cuatrimotos en rutas naturales.',
+    img: 'img/atv.png',
+    extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
+    meta: 'Privado',
+    precio: '$550.000 COP',
+    duracion: '4 horas aprox.',
+    longDesc:'Explora terrenos diversos mientras te sumerges en la belleza de la naturaleza. Ya sea que estés buscando adrenalina o simplemente desees relajarte y disfrutar del paisaje, los tours en cuatrimotos ofrecen algo para todos. '  
+  },
+  {
+    id: 11,
+    title: 'Cabalgata',
+    type: 'Privado',
+    short: 'Aventura off-road con cuatrimotos en rutas naturales.',
+    img: 'https://source.unsplash.com/featured/?atv,quad',
+    meta: 'Privado',
+    duracion: '4 horas aprox.',
+    url: 'https://themedellinadventure-com.webnode.com.co/reservar/',
+    longDesc: 'Visita a finca cafetera con explicación del proceso del café, degustación y paseo por los cultivos.'  
+  },
+  {
+    id: 12,
+     title: 'Rio Claro',
     type: 'privado',
     short: 'Vuelo en tándem sobre valles y paisajes; aventura y vistas únicas.',
     img: 'https://source.unsplash.com/featured/?paragliding,parapente',
     meta: 'Privado',
-    duracion: '1 día',
+    duracion: '14 horas',
     url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
-  },
-  {
-    id: 11,
-    title: "Atv's - Cuatrimotos",
-    type: 'privado',
-    short: 'Aventura off-road con cuatrimotos en rutas naturales.',
-    img: 'https://source.unsplash.com/featured/?atv,quad',
-    meta: 'Privado',
-    duracion: '1 día',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
-  },
-  {
-    id: 12,
-    title: 'Cabalgata',
-    type: 'privado',
-    short: 'Aventura off-road con cuatrimotos en rutas naturales.',
-    img: 'https://source.unsplash.com/featured/?atv,quad',
-    meta: 'Privado',
-    duracion: '1 día',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/',
-    longDesc: 'Visita a finca cafetera con explicación del proceso del café, degustación y paseo por los cultivos.'
+   
   }
 
 
