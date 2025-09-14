@@ -64,6 +64,71 @@ const tours = [
     precioPrivado: '$500.000 COP',
     duracion: '6 horas aprox',
     longDesc: 'Conoce un pintoresco pueblo famoso por sus coloridos zócalos y la imponente Piedra del Peñol. Además de disfrutar la vista panorámica desde lo alto de la roca, los visitantes pueden recorrer en barco la represa, navegando entre islas y paisajes naturales únicos, mientras conocen la historia del lugar y disfrutan de una experiencia tranquila y llena de encanto.'
+  },
+  {
+    id: 6,
+    title: 'Tour Casa de las Flores',
+    type: 'Privado',
+    short: 'Descubre la magia de la cultura silletera, donde aprenderás sobre la tradición, el arte floral y la historia detrás de las silletas.',
+    img: 'img/flores.png',
+    extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
+    meta: 'Privado',
+    precio: '$400.000 COP',
+    duracion: '6 horas aprox.',
+    longDesc: 'El Tour Casa de las Flores te sumerge en la tradición silletera, una de las expresiones culturales más emblemáticas de Medellín. En esta experiencia, visitarás una finca típica donde conocerás de cerca el arte de armar silletas, escucharás historias de los silleteros y descubrirás el profundo significado que tienen las flores en la identidad antioqueña. Un recorrido lleno de color, tradición y orgullo campesino.'
+  },
+  {
+    id: 7,
+    title: 'Santa Fé de Antioquia',
+    type: 'Privado',
+    short: 'Pueblo colonial con arquitectura y puentes históricos.',
+    img: 'santafe.png',
+    extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
+    meta: 'Privado',
+    precio: '$550.000 COP',
+    duracion: '6 horas aprox.',
+    longDesc: 'El tour por Santa Fe de Antioquia te transporta al pasado con sus calles empedradas, casas coloniales y encantadoras plazas. A solo una hora y media de Medellín, este recorrido incluye la visita al icónico Puente de Occidente, iglesias históricas y museos locales, todo acompañado por una guía que narra la historia de uno de los pueblos más antiguos y emblemáticos de Colombia. Ideal para quienes buscan cultura, historia y un entorno pintoresco.'
+  },
+  {
+    id: 9,
+    title: 'Rio Claro',
+    type: 'privado',
+    short: 'Vuelo en tándem sobre valles y paisajes; aventura y vistas únicas.',
+    img: 'https://source.unsplash.com/featured/?paragliding,parapente',
+    meta: 'Privado',
+    duracion: '1 día',
+    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
+  },
+  {
+    id: 10,
+    title: 'Parapente',
+    type: 'privado',
+    short: 'Vuelo en tándem sobre valles y paisajes; aventura y vistas únicas.',
+    img: 'https://source.unsplash.com/featured/?paragliding,parapente',
+    meta: 'Privado',
+    duracion: '1 día',
+    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
+  },
+  {
+    id: 11,
+    title: "Atv's - Cuatrimotos",
+    type: 'privado',
+    short: 'Aventura off-road con cuatrimotos en rutas naturales.',
+    img: 'https://source.unsplash.com/featured/?atv,quad',
+    meta: 'Privado',
+    duracion: '1 día',
+    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
+  },
+  {
+    id: 12,
+    title: 'Cabalgata',
+    type: 'privado',
+    short: 'Aventura off-road con cuatrimotos en rutas naturales.',
+    img: 'https://source.unsplash.com/featured/?atv,quad',
+    meta: 'Privado',
+    duracion: '1 día',
+    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
+    longDesc: 'Visita a finca cafetera con explicación del proceso del café, degustación y paseo por los cultivos.'
   }
 
 
