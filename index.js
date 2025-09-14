@@ -129,39 +129,26 @@ const tours = [
     id: 11,
     title: 'Cabalgata',
     type: 'Privado',
-    short: 'Aventura off-road con cuatrimotos en rutas naturales.',
+    short: 'Si eres amante de la naturaleza, la emoción de la exploración y la conexión con los caballos, este tour es perfecto para ti.',
     img: 'https://source.unsplash.com/featured/?atv,quad',
+    extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
     meta: 'Privado',
-    duracion: '4 horas aprox.',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/',
-    longDesc: 'Visita a finca cafetera con explicación del proceso del café, degustación y paseo por los cultivos.'  
+    precio: '$450.000 COP',
+    duracion: '6 horas aprox.',
+    longDesc: 'La cabalgata ofrece una experiencia para explorar la naturaleza desde una perspectiva diferente. Montando a caballo, recorrerás caminos entre bosques y ríos cristalinos, con vistas panorámicas que te dejarán sin aliento. Es una actividad perfecta para disfrutar del aire libre y descubrir la belleza del paisaje de forma relajada y segura.'  
   },
   {
     id: 12,
      title: 'Rio Claro',
-    type: 'privado',
-    short: 'Vuelo en tándem sobre valles y paisajes; aventura y vistas únicas.',
+    type: 'Privado',
+    short: 'Vive la adrenalina del rafting y body rafting en Río Claro, rodeado de selva tropical y aguas cristalinas.',
     img: 'https://source.unsplash.com/featured/?paragliding,parapente',
+    extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
     meta: 'Privado',
-    duracion: '14 horas',
-    url: 'https://themedellinadventure-com.webnode.com.co/reservar/'
-   
+    precio: '$980.000 COP',
+    duracion: '14 horas aprox.',
+    longDesc: 'Río Claro es el destino perfecto para los amantes de la aventura. Sus aguas transparentes y cañones de mármol ofrecen el escenario ideal para practicar rafting y body rafting, una experiencia cargada de emoción y belleza natural. Guiado por expertos locales, te deslizarás por rápidos suaves y tramos tranquilos que permiten disfrutar del paisaje selvático, las formaciones rocosas únicas y la energía del río'
   }
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-  
 ];
 
 // ====================
