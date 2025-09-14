@@ -313,24 +313,43 @@ brochureBtn.addEventListener("click", () => {
 });
 
 // ====================
-// Filtros de búsqueda
+// Filtros de búsqueda (MEJORADOS)
 // ====================
 const searchInput = document.getElementById("search");
 const typeSelect = document.getElementById("type");
 const clearBtn = document.getElementById("clear");
 
+/**
+ * Comprueba si el valor `type` (p. ej. 'privado') está presente como palabra
+ * dentro de `meta` (p. ej. 'Compartido / Privado' o 'Privado').
+ */
+function metaIncludesType(meta, type) {
+  if (!type || type === 'all') return true;
+  if (!meta) return false;
+  // Escape del texto para usar en regex
+  const escaped = type.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+  const re = new RegExp(`\\b${escaped}\\b`, 'i'); // busca como palabra completa, case-insensitive
+  return re.test(meta);
+}
+
 function filterTours() {
-  const search = searchInput.value.toLowerCase().trim();
-  const type = typeSelect.value.toLowerCase();
+  const search = (searchInput.value || '').toLowerCase().trim();
+  const type = (typeSelect.value || 'all').toLowerCase().trim();
 
   const filtered = tours.filter(t => {
-    const matchesSearch =
-      (t.title && t.title.toLowerCase().includes(search)) ||
-      (t.short && t.short.toLowerCase().includes(search)) ||
-      (t.longDesc && t.longDesc.toLowerCase().includes(search));
+    const title = (t.title || '').toLowerCase();
+    const short = (t.short || '').toLowerCase();
+    const longDesc = (t.longDesc || '').toLowerCase();
+    const meta = (t.meta || '').toLowerCase();
 
-    const metaValue = (t.meta || "").toLowerCase();
-    const matchesType = type === "all" || (type && metaValue.includes(type));
+    const matchesSearch =
+      (!search) ||
+      title.includes(search) ||
+      short.includes(search) ||
+      longDesc.includes(search) ||
+      meta.includes(search);
+
+    const matchesType = metaIncludesType(meta, type);
 
     return matchesSearch && matchesType;
   });
@@ -345,4 +364,3 @@ clearBtn.addEventListener("click", () => {
   typeSelect.value = "all";
   renderTours(tours);
 });
-
