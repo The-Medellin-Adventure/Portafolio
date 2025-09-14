@@ -23,22 +23,57 @@ const tours = [
     meta: 'Compartido / Privado',
     precioCompartido: '$90.000 COP',
     precioPrivado: '$350.000 COP',
-    duracion: '4 horas',
+    duracion: '4 horas aprox.',
     longDesc: 'Descubre lo mejor de Medellín en un city tour guiado que te lleva por sus lugares más representativos, combinando cultura, historia y movilidad innovadora. Visita sitios icónicos como el Pueblito Paisa y la Plaza Botero, y vive la experiencia de recorrer la ciudad a bordo de su moderno sistema de transporte: el Metro, el Tranvía y el Metrocable. Acompañado por un guía experto, conocerás de cerca la transformación urbana de Medellín y su compromiso con la inclusión y el desarrollo sostenible.'
   },
   {
     id: 3,
     title: 'Graffitour - Comuna 13',
-    type: 'Compartido',
+    type: 'Compartido / Privado',
     short: 'Tour cultural por la Comuna 13 con arte urbano y comunidad local.',
     img: 'img/comuna.jpeg',
     extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
     meta: 'Compartido / Privado',
     precioCompartido: '$90.000 COP',
-    precioPrivado: '$350.000 COP',
-    duracion: '4 horas',
+    precioPrivado: '$310.000 COP',
+    duracion: '4 horas aprox.',
     longDesc: 'La Comuna 13 es un vibrante barrio de Medellín reconocido por su impresionante arte callejero, lleno de grafitis coloridos, murales con mensajes de resistencia y cultura, música en vivo, breakdance, trovas y una energía única. Sus famosas escaleras eléctricas al aire libre conectan a los visitantes con miradores espectaculares y una historia de transformación social. Es un recorrido lleno de vida, arte y esperanza..'
   }
+  {
+    id: 4,
+    title: 'Guatapé',
+    type: 'Compartido / Privado',
+    short: 'Conoce un colorido pueblo rodeado de naturaleza, famoso por sus zócalos vibrantes y la imponente Piedra del Peñol, desde donde se disfruta una de las mejores vistas de Colombia.',
+    img: 'img/guatape.png',
+    extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
+    meta: 'Compartido / Privado',
+    precioCompartido: '$180.000 COP',
+    precioPrivado: '$635.000 COP',
+    duracion: '10 horas aprox',
+    longDesc: 'Conoce un pintoresco pueblo famoso por sus coloridos zócalos y la imponente Piedra del Peñol. Además de disfrutar la vista panorámica desde lo alto de la roca, los visitantes pueden recorrer en barco la represa, navegando entre islas y paisajes naturales únicos, mientras conocen la historia del lugar y disfrutan de una experiencia tranquila y llena de encanto.'
+  }
+{
+    id: 5,
+    title: 'Guatapé',
+    type: 'Compartido / Privado',
+    short: 'Conoce un colorido pueblo rodeado de naturaleza, famoso por sus zócalos vibrantes y la imponente Piedra del Peñol, desde donde se disfruta una de las mejores vistas de Colombia.',
+    img: 'img/guatape.png',
+    extraImg: 'https://source.unsplash.com/featured/?graffiti,streetart',
+    meta: 'Compartido / Privado',
+    precioCompartido: '$180.000 COP',
+    precioPrivado: '$635.000 COP',
+    duracion: '10 horas aprox',
+    longDesc: 'Conoce un pintoresco pueblo famoso por sus coloridos zócalos y la imponente Piedra del Peñol. Además de disfrutar la vista panorámica desde lo alto de la roca, los visitantes pueden recorrer en barco la represa, navegando entre islas y paisajes naturales únicos, mientras conocen la historia del lugar y disfrutan de una experiencia tranquila y llena de encanto.'
+  }
+
+
+
+
+
+
+
+
+  
 ];
 
 // ====================
