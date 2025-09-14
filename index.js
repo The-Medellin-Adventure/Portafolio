@@ -4,27 +4,27 @@ const tours = [
   {
     id: 1,
     title: 'Medellín 360°',
-    type: 'virtual',
+    type: 'Virtual',
     short: 'Un tour inmersivo por Plaza Botero, Pueblito Paisa y otros íconos de Medellín.',
     img: 'img/360.png',
     extraImg: 'img/virtual.png',
     meta: 'Virtual',
     precio: '$40.000 COP',
     duracion: '1 hora',
-    longDesc: 'Explora Medellín desde cualquier lugar del mundo con este tour virtual inmersivo en 360°, ideal para quienes desean conocer la ciudad sin necesidad de desplazarse. A través de un enlace exclusivo, los usuarios accederán a un recorrido activo durante 1 hora, diseñado para visualizarse en un solo dispositivo, brindando una experiencia personalizada y de alta calidad. <br>Durante el tour, los visitantes podrán interactuar con hotspots informativos y hotspots visuales, donde encontrarán datos relevantes, imágenes exclusivas y contenido enriquecido sobre los principales atractivos de Medellín. Además, una guía virtual acompañará todo el recorrido, proporcionando contexto histórico, cultural y curiosidades en cada parada.<br><br>Acceso: Válido para un (1) dispositivo por recorrido.'
+    longDesc: 'Descubre Medellín desde cualquier lugar del mundo con este recorrido virtual inmersivo en 360°, activo por 1 hora y accesible desde un solo dispositivo. Explora los principales atractivos de la ciudad a través de hotspots informativos e imágenes exclusivas, guiado por una guia virtual que ofrece contexto histórico y cultural en cada parada. Una experiencia personalizada, rica en contenido y sin necesidad de desplazarte.'
   },
   {
     id: 2,
     title: 'City Tour Medellín',
-    type: 'compartido',
-    short: 'Recorrido por los puntos más icónicos de Medellín: Plaza Botero y miradores.',
-    img: 'https://source.unsplash.com/featured/?medellin,city',
+    type: 'Compartido',
+    short: 'Recorrido por los puntos más icónicos de Medellín: Plaza Botero y muchosm ás.',
+    img: 'img/medellin2.jpg',
     extraImg: 'https://source.unsplash.com/featured/?plazabotero,medellin',
     meta: 'Compartido / Privado',
     precioCompartido: '$90.000 COP',
     precioPrivado: '$350.000 COP',
     duracion: '4 horas',
-    longDesc: 'Incluye transporte, guía local y paradas en los miradores principales.'
+    longDesc: 'Descubre lo mejor de Medellín en un city tour guiado que te lleva por sus lugares más representativos, combinando cultura, historia y movilidad innovadora. Visita sitios icónicos como el Pueblito Paisa y la Plaza Botero, y vive la experiencia de recorrer la ciudad a bordo de su moderno sistema de transporte: el Metro, el Tranvía y el Metrocable. Acompañado por un guía experto, conocerás de cerca la transformación urbana de Medellín y su compromiso con la inclusión y el desarrollo sostenible. Ideal para quienes desean explorar la ciudad de forma auténtica y enriquecedora.'
   },
   {
     id: 3,
