@@ -291,15 +291,13 @@ bookingForm.addEventListener("submit", e => {
 
   const mensaje = `
 Hola, quiero reservar un tour:
-
-👤 Nombre: ${nombre}
-📧 Correo: ${correo}
-📞 Teléfono: ${telefono}
-🌐 Idioma: ${idioma}
+Mi nombre es 👤 Nombre: ${nombre}, quiero reservar:
 🎯 Tour: ${tour}
+🌐 Idioma: ${idioma}
 💲 Tarifa: ${tarifa}
 📅 Fecha: ${fecha}
 👥 Personas: ${personas}
+📞 Teléfono: ${telefono}
 📝 Comentarios: ${comentarios}
   `;
 
@@ -327,7 +325,7 @@ function filterTours() {
 
   const filtered = tours.filter(t => {
     const matchesSearch = t.title.toLowerCase().includes(search);
-    const matchesType = type === "all" || t.type === type;
+    const matchesType = type === "all" || t.meta === meta;
     return matchesSearch && matchesType;
   });
 
