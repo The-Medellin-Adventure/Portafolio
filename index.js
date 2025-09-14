@@ -62,7 +62,7 @@ function renderTours(list) {
       <div class="card-body">
         <div class="meta">
           <span>${tour.meta}</span>
-          <span class="tags">${tour.type}</span>
+          <span class="tags">${tour.meta}</span>
         </div>
         <h3 class="title">${tour.title}</h3>
         <p class="desc">${tour.short}</p>
@@ -207,7 +207,7 @@ brochureBtn.addEventListener("click", () => {
 // Filtros de búsqueda
 // ====================
 const searchInput = document.getElementById("search");
-const typeSelect = document.getElementById("type");
+const typeSelect = document.getElementById("meta");
 const clearBtn = document.getElementById("clear");
 
 function filterTours() {
