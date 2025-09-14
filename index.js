@@ -52,7 +52,7 @@ const tours = [
     duracion: '10 horas aprox',
     longDesc: 'Conoce un pintoresco pueblo famoso por sus coloridos zócalos y la imponente Piedra del Peñol. Además de disfrutar la vista panorámica desde lo alto de la roca, los visitantes pueden recorrer en barco la represa, navegando entre islas y paisajes naturales únicos, mientras conocen la historia del lugar y disfrutan de una experiencia tranquila y llena de encanto.'
   },
-{
+  {
     id: 5,
     title: 'Tour del Café',
     type: 'Compartido / Privado',
@@ -316,16 +316,22 @@ brochureBtn.addEventListener("click", () => {
 // Filtros de búsqueda
 // ====================
 const searchInput = document.getElementById("search");
-const typeSelect = document.getElementById("meta");
+const typeSelect = document.getElementById("type");
 const clearBtn = document.getElementById("clear");
 
 function filterTours() {
-  const search = searchInput.value.toLowerCase();
-  const type = typeSelect.value;
+  const search = searchInput.value.toLowerCase().trim();
+  const type = typeSelect.value.toLowerCase();
 
   const filtered = tours.filter(t => {
-    const matchesSearch = t.title.toLowerCase().includes(search);
-    const matchesType = type === "all" || t.meta === meta;
+    const matchesSearch =
+      (t.title && t.title.toLowerCase().includes(search)) ||
+      (t.short && t.short.toLowerCase().includes(search)) ||
+      (t.longDesc && t.longDesc.toLowerCase().includes(search));
+
+    const metaValue = (t.meta || "").toLowerCase();
+    const matchesType = type === "all" || (type && metaValue.includes(type));
+
     return matchesSearch && matchesType;
   });
 
@@ -339,3 +345,4 @@ clearBtn.addEventListener("click", () => {
   typeSelect.value = "all";
   renderTours(tours);
 });
+
