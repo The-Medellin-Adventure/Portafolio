@@ -35,7 +35,7 @@ const tours = [
     extraImg: 'img/1.png',
     meta: 'Compartido / Privado',
     precioCompartido: '$90.000 COP',
-    precioPrivado: '$310.000 COP',
+    precioPrivado: '$350.000 COP',
     duracion: '4 horas aprox.',
     longDesc: 'La Comuna 13 es un vibrante barrio de Medellín reconocido por su impresionante arte callejero, lleno de grafitis coloridos, murales con mensajes de resistencia y cultura, música en vivo, breakdance, trovas y una energía única. Sus famosas escaleras eléctricas al aire libre conectan a los visitantes con miradores espectaculares y una historia de transformación social. Es un recorrido lleno de vida, arte y esperanza..'
   },
@@ -60,7 +60,7 @@ const tours = [
     img: 'img/cafe.png',
     extraImg: 'img/4.png',
     meta: 'Compartido / Privado',
-    precioCompartido: '$200.000 COP',
+    precioCompartido: '$250.000 COP',
     precioPrivado: '$500.000 COP',
     duracion: '6 horas aprox',
     longDesc: 'Conoce un pintoresco pueblo famoso por sus coloridos zócalos y la imponente Piedra del Peñol. Además de disfrutar la vista panorámica desde lo alto de la roca, los visitantes pueden recorrer en barco la represa, navegando entre islas y paisajes naturales únicos, mientras conocen la historia del lugar y disfrutan de una experiencia tranquila y llena de encanto.'
@@ -133,7 +133,7 @@ const tours = [
     img: 'img/caballo.jpeg',
     extraImg: 'img/8.png',
     meta: 'Privado',
-    precio: '$450.000 COP',
+    precio: '$550.000 COP',
     duracion: '6 horas aprox.',
     longDesc: 'La cabalgata ofrece una experiencia para explorar la naturaleza desde una perspectiva diferente. Montando a caballo, recorrerás caminos entre bosques y ríos cristalinos, con vistas panorámicas que te dejarán sin aliento. Es una actividad perfecta para disfrutar del aire libre y descubrir la belleza del paisaje de forma relajada y segura.'  
   },
